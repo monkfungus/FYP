@@ -1,0 +1,6 @@
+
+Bluetooth device transmitter classes - https://www.sans.edu/cyber-research/security-laboratory/article/bluetooth
+Device Class 	Transmit Power 	Intended Range
+Class 3 	1 mW 	less than 10 meters
+Class 2 	2.5 mW 	10 meters, 33 feet
+Class 1 	100 mW 	100 meters, 328 feet
