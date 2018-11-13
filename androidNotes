@@ -1,0 +1,6 @@
+android.location
+Google Location Services API (part of Google Play Services)
+
+Android's Network Location Provider uses GPS, cell tower and WiFi
+	- For the sake of FYP, just use GPS
+

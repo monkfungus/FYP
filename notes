@@ -4,3 +4,9 @@ Device Class 	Transmit Power 	Intended Range
 Class 3 	1 mW 	less than 10 meters
 Class 2 	2.5 mW 	10 meters, 33 feet
 Class 1 	100 mW 	100 meters, 328 feet
+
+https://blog.lighthouse.io/exploring-new-ways-to-use-beacons-for-people-and-asset-tracking/
+
+https://gist.github.com/jkeefe/5d3d04ab544405c96147
+
+{"98:01:A7:B4:EF:50":"dimitrim","C0:EE:FB:50:AF:57":"bigblock"}
