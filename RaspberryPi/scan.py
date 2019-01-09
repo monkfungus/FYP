@@ -1,6 +1,8 @@
 import bluetooth
 import requests
 import json
+from datetime import datetime
+import pytz
 
 url = 'http://ec2-52-15-131-120.us-east-2.compute.amazonaws.com:3000'
 
@@ -8,6 +10,7 @@ url = 'http://ec2-52-15-131-120.us-east-2.compute.amazonaws.com:3000'
 print('Scanning...')
 nearby_devices = bluetooth.discover_devices(
         duration=8, lookup_names=True, flush_cache=True)
+
 print('Found %d devices' % len(nearby_devices))
 
 devices = []
@@ -23,7 +26,7 @@ location['latitude'] = 83
 location['longitude'] = -9
 
 # mock timestamp
-timestamp = '20181228T183643Z'
+timestamp = datetime.now(pytz.utc).isoformat()
 
 # build payload
 payload = {}
