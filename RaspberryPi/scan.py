@@ -2,28 +2,40 @@ import bluetooth
 import requests
 import json
 
-print('Scanning...')
+url = 'http://ec2-52-15-131-120.us-east-2.compute.amazonaws.com:3000'
 
+# find nearby devices and save
+print('Scanning...')
 nearby_devices = bluetooth.discover_devices(
         duration=8, lookup_names=True, flush_cache=True)
-
 print('Found %d devices' % len(nearby_devices))
 
-payload = '{'
+devices = []
 for addr, name in nearby_devices:
-    payload += '\"' + addr + '\":\"' + name + '\",'
-    try:
-        print('\t%s - %s' % (addr, name))
-    except UnicodeEncodeError:
-        print('\t%s - %s' % (addr, name.encode('utf-8', 'replace')))
-payload = payload.strip(',')
-payload += '}'
+    newDevice = {}
+    newDevice['address'] = addr
+    newDevice['name'] = name
+    devices.append(newDevice)
+    
+# mock location
+location = {}
+location['latitude'] = 83
+location['longitude'] = -9
+
+# mock timestamp
+timestamp = '20181228T183643Z'
+
+# build payload
+payload = {}
+payload['timestamp'] = timestamp
+payload['location'] = location
+payload['devices'] = devices
+
 print(payload)
-print(json.loads(payload))
+
 print('Sending to server..')
-url = 'http://ec2-3-16-131-147.us-east-2.compute.amazonaws.com:3000/'
 try:
-    r = requests.post(url, json=json.loads(payload))
+    r = requests.post(url, json=payload)
 except requests.exceptions.ConnectionError as e:
     print('ConnectionError: ', e)
 else:
