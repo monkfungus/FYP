@@ -4,7 +4,8 @@ import json
 from datetime import datetime
 import pytz
 
-url = 'http://localhost:3000'
+#url = 'http://localhost:3000'
+url = 'https://5o6pmquqyi.execute-api.us-east-2.amazonaws.com/latest/readings'
 
 # mock location
 location = {}

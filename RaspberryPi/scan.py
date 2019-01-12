@@ -4,7 +4,7 @@ import json
 from datetime import datetime
 import pytz
 
-url = 'http://ec2-52-15-131-120.us-east-2.compute.amazonaws.com:3000'
+url = 'https://5o6pmquqyi.execute-api.us-east-2.amazonaws.com/latest/readings'
 
 # find nearby devices and save
 print('Scanning...')
