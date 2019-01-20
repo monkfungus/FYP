@@ -12,5 +12,8 @@ api.post('/readings', function (request) {
     }
     return docClient.put(params).promise()
 }, { success: 201} )
+api.get('/hello', function (request) {
+    return 'hello there'
+})
 
 module.exports = api
