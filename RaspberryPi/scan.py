@@ -1,8 +1,7 @@
 import bluetooth
 import requests
 import json
-from datetime import datetime
-import pytz
+from datetime import datetime, timezone
 
 url = 'https://5o6pmquqyi.execute-api.us-east-2.amazonaws.com/latest/readings'
 
@@ -26,7 +25,7 @@ location['latitude'] = 83
 location['longitude'] = -9
 
 # mock timestamp
-timestamp = datetime.now(pytz.utc).isoformat()
+timestamp = datetime.now(timezone.utc)
 
 # build payload
 payload = {}
