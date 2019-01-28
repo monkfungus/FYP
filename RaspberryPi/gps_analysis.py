@@ -1,10 +1,10 @@
 import json
 import argparse
-import sys
+import statistics
 # from json file of multiple gps readings, 
 # compute mean, variance etc
 description =  'from json file of multiple gps readings, compute mean, variance etc'
-def main(argv):
+def main():
     filename = ''    
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('input_file', 
@@ -15,17 +15,20 @@ def main(argv):
     with open(filename, 'r') as file:
         raw_data = json.load(file)
     
-    total = len(raw_data)
-    total_lat = 0
-    total_long = 0
+    lats = []
+    longs = []
     for reading in raw_data:
-        total_lat += reading['latitude']
-        total_long += reading['longitude']
-
-    print(total_lat/total)
-    print(total_long/total)
+        lats.append(reading['latitude'])
+        longs.append(reading['longitude'])
+    
+    mean_lat = statistics.mean(lats)
+    mean_long = statistics.mean(longs)
+    print('lat mean: ', mean_lat)
+    print('long mean: ', mean_long)
+    print('lat stdev: ', statistics.stdev(lats))
+    print('long stdev: ', statistics.stdev(longs))
+    print('lat variance: ', statistics.variance(lats))
+    print('long variance: ', statistics.variance(longs))
         
-        
-
 if __name__ == '__main__':
-    main(sys.argv)
+    main()
