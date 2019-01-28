@@ -2,4 +2,3 @@
 ~$*.doc
 ~$*.docx
 */node_modules/*
-.vscode/
