@@ -17,9 +17,11 @@ def main():
     
     lats = []
     longs = []
+    sats = []
     for reading in raw_data:
         lats.append(reading['latitude'])
         longs.append(reading['longitude'])
+        sats.append(reading['num_satellites'])
     
     mean_lat = statistics.mean(lats)
     mean_long = statistics.mean(longs)
@@ -29,6 +31,7 @@ def main():
     print('long stdev: ', statistics.stdev(longs))
     print('lat variance: ', statistics.variance(lats))
     print('long variance: ', statistics.variance(longs))
+    print('mean sats: ', statistics.mean(sats))
         
 if __name__ == '__main__':
     main()
