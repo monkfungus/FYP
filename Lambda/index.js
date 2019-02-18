@@ -14,6 +14,7 @@ const table = {
 }
 
 app.post('/readings', (req, res) => {
+    log(req)
     const reading = req.body
     let params = {
         TableName: table.readings,
@@ -111,21 +112,33 @@ app.post('/readings', (req, res) => {
     //     })
 })
 // return list of devices or all details about specific device
-// app.get('/devices', (req, res) => {
-//     res.send('not yet implemented')
-// })
-// app.get('/devices/:id', (req, res) => {
-//     console.log(req.params)
-//     res.send('not yet implemented')
-// })
-// // return estimation of current location
-// app.get('/devices:id/location', (req, res) => {
-    
-// })
+app.get('/devices', (req, res) => {
+    log(req)
+    res.status(200).send('Not yet implemented')
+})
+
+app.get('/devices/:id', (req, res) => {
+    log(req)
+    console.log(req.params)
+    res.status(200).send('Not yet implemented')
+})
+
+// return estimation of current location for device
+app.get('/devices:id/location', (req, res) => { 
+    log(req)
+    res.send('Not yet implemented')
+})
+
 app.get('/', (req, res) => {
-    console.log(req.method)
+    log(req)
     res.send('hello there')
 })
+
+function log(req) {
+    const now = new Date(Date.now())
+    const timestamp = now.toISOString()
+    console.log(`${timestamp} ${req.method} ${req.url}`)
+}
 
 // if running locally
 if (LOCAL) {
