@@ -8,7 +8,10 @@
             "name": "Lambda",
             "type": "node",
             "request": "launch",
-            "program": "${workspaceFolder}/Lambda/index.js"
+            "program": "${workspaceFolder}/Lambda/index.js",
+            "env": {
+                "LOCAL": "True"
+            }
         }
     ]
 }
