@@ -12,6 +12,17 @@
             "env": {
                 "LOCAL": "True"
             }
+        },
+        {
+            "name": "lambda test",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/Lambda",
+            "runtimeExecutable": "${workspaceFolder}/Lambda/node_modules/mocha/bin/mocha",
+            "runtimeArgs": [
+                "${workspaceFolder}/Lambda/test"
+            ],
+            "outputCapture": "std"
         }
     ]
 }

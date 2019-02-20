@@ -1,18 +1,19 @@
 {
-  "name": "Lambda",
+  "name": "fyp-lambda",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "test": "mocha test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.386.0",
-    "claudia-api-builder": "^4.1.1",
+    "aws-sdk": "^2.404.0",
+    "aws-serverless-express": "^3.3.5",
+    "claudia-api-builder": "^4.1.2",
     "express": "^4.16.4",
     "request": "^2.88.0"
   },

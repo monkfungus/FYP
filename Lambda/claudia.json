@@ -1,11 +1,10 @@
 {
   "lambda": {
-    "role": "Lambda-executor",
-    "name": "Lambda",
+    "role": "fyp-lambda-executor",
+    "name": "fyp-lambda",
     "region": "us-east-2"
   },
   "api": {
-    "id": "5o6pmquqyi",
-    "module": "index"
+    "id": "e8xdl2bbt4"
   }
 }
