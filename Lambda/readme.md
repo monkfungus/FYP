@@ -3,6 +3,8 @@ To update `claudia update`
 
 Might need to specify aws iam user with valid credentials `export AWS_PROFILE=claudia`
 
+Or by adding the option `--profile claudia`
+
 User credentials stored in `~/.aws/credentials`
 
 Lambda details stored in `claudia.js`

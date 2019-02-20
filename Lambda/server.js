@@ -1,7 +1,8 @@
-const LOCAL = process.env.LOCAL
+const util = require('util')
 const express = require('express')
 const app = express()
 app.use(express.json())
+const LOCAL = process.env.LOCAL
 const AWS = require('aws-sdk')
 if (LOCAL) {
     AWS.config.update({region: "us-east-2"})
@@ -21,7 +22,7 @@ app.post('/readings', (req, res) => {
         Item: reading
     }
     
-    console.log("DB/readings.put reading: ", reading)
+    console.log('DB/readings.put: reading')
     docClient.put(params).promise()
         .then(() => {
             console.log("DB/readings.put: Success")
@@ -137,7 +138,7 @@ app.get('/', (req, res) => {
 function log(req) {
     const now = new Date(Date.now())
     const timestamp = now.toISOString()
-    console.log(`${timestamp} ${req.method} ${req.url} ${req.body}`)
+    console.log(`${timestamp} ${req.method} ${req.url} ${util.inspect(req.body)}`)
 }
 
 // if running locally
