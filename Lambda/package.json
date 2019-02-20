@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "mocha test"
+    "start": "LOCAL=true node server.js",
+    "test-local": "LOCAL=true mocha test",
+    "test-remote": "mocha test"
   },
   "keywords": [],
   "author": "",

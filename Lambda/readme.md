@@ -21,4 +21,10 @@ To update IAM policies for security role of function, need to run `claudia destr
 
 It seems one can use `aws iam put-role-policy` or `aws iam attach-role-policy` taken from [claudia docs](https://claudiajs.com/tutorials/external-services.html)
 
+## Running Scripts
+To run the server locally `npm start` or `npm run start`
+
+To run the test suite against a remote instance `npm run test-remote`
+
+To run the test suite against a local instance `npm run test-local`
 

@@ -2,15 +2,15 @@ const chai = require('chai')
 const expect = chai.expect
 const request = require('request')
 const fs = require('fs')
-const endpoint = buildEndpoint()
+const LOCAL = process.env.LOCAL
+const endpoint = buildEndpoint(LOCAL)
 const resources = {    
     'readings': '/readings'
 }
 
 describe('simple tests', function(done) {
-	it('Should build an endpoint', function(done) {
-		const endpoint = buildEndpoint()
-		console.log(endpoint)
+	it('Should have an endpoint', function(done) {
+		console.log(`Endpoint: ${endpoint}`)
 		done()
 	})
 })
@@ -22,7 +22,10 @@ describe('/', function(done) {
 				expect(res.statusCode).to.be.equal(200)
 				done()
 			})
-			.on('error', err => done(err))
+			.on('error', err => {
+				console.log(`Endpoint: ${endpoint}`)
+				done(err)
+			})
 	})
 })
 
@@ -60,7 +63,10 @@ function generateMockReading() {
     return mockReading
 }
 
-function buildEndpoint() {
+function buildEndpoint(local) {
+	if (local) {
+		return `http://localhost:3000`
+	}
 	const claudiaConfig = JSON.parse(fs.readFileSync('claudia.json', 'utf8'))
 	const region = claudiaConfig.lambda.region
 	const id = claudiaConfig.api.id

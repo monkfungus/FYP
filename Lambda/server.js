@@ -21,7 +21,7 @@ app.post('/readings', (req, res) => {
         Item: reading
     }
     
-    console.log(`Trying to put reading in db`)
+    console.log(`DB.put ${params}`)
     docClient.put(params).promise()
         .then(() => {
             console.log("put reading in db")
