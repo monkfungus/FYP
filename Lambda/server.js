@@ -21,14 +21,14 @@ app.post('/readings', (req, res) => {
         Item: reading
     }
     
-    console.log(`DB.put ${params}`)
+    console.log("DB/readings.put reading: ", reading)
     docClient.put(params).promise()
         .then(() => {
-            console.log("put reading in db")
+            console.log("DB/readings.put: Success")
             return res.sendStatus(201) 
         })
         .catch((err) => {
-            console.log("Failed to put to DB. Error: ", err)
+            console.log("DB/readings.put: Error: ", err)
             return res.sendStatus(500)
         })
     // docClient.put(params).promise()
@@ -137,7 +137,7 @@ app.get('/', (req, res) => {
 function log(req) {
     const now = new Date(Date.now())
     const timestamp = now.toISOString()
-    console.log(`${timestamp} ${req.method} ${req.url}`)
+    console.log(`${timestamp} ${req.method} ${req.url} ${req.body}`)
 }
 
 // if running locally

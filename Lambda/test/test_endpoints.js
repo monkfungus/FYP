@@ -33,7 +33,11 @@ describe('/readings', function(done) {
     it('should accept valid POST', function(done) {
         const payload = generateMockReading()
         request
-            .post(endpoint + resources.readings)
+            .post({
+				url: endpoint + resources.readings,
+				body: payload,
+				json: true
+			})
             .on('response', function(res) {
                 expect(res.statusCode).to.be.equal(201)
                 done()
