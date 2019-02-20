@@ -3,7 +3,7 @@ const expect = chai.expect
 const request = require('request')
 const fs = require('fs')
 const endpoint = buildEndpoint()
-const endpoints = {    
+const resources = {    
     'readings': '/readings'
 }
 
@@ -30,7 +30,7 @@ describe('/readings', function(done) {
     it('should accept valid POST', function(done) {
         const payload = generateMockReading()
         request
-            .post(endpoints.root + endpoints.readings)
+            .post(endpoint + resources.readings)
             .on('response', function(res) {
                 expect(res.statusCode).to.be.equal(201)
                 done()
