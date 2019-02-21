@@ -14,6 +14,7 @@ const table = {
     devices: 'devices'
 }
 
+// upload a reading
 app.post('/readings', (req, res) => {
     log(req)
     const reading = req.body
@@ -107,10 +108,31 @@ app.post('/readings', (req, res) => {
         })
 })
 
-// return list of devices or all details about specific device
+// return list of device ids
 app.get('/devices', (req, res) => {
     log(req)
-    res.status(200).send('Not yet implemented')
+    /**
+     * Scan for all devices
+     * Return list of all device IDs 
+     */
+    const params = {
+        TableName: table.devices,
+        ProjectionExpression: 'id' // attributes we want in result
+    }
+    console.log('Scanning table:/devices for all device ids')
+    docClient.scan(params, function(err, data) {
+        if (err) {
+            console.error('Scanning table:/devices failed')
+            res.sendStatus(500)
+        } else {
+            let devices = []
+            data.Items.forEach(function(id) {
+                devices.push(id)
+            })
+            console.log(`Found ${devices.length()} devices`)
+            res.status(200).send({'devices': devices})
+        }
+    })
 })
 
 // return info stored about invidual device

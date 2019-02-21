@@ -10,7 +10,7 @@
         "dynamodb:Scan"
       ],
       "Effect": "Allow",
-      "Resource": "arn:aws:dynamodb:us-east-2:088303344574:table/readings"
+      "Resource": "arn:aws:dynamodb:us-east-2:088303344574:table/*"
     }
   ]
 }

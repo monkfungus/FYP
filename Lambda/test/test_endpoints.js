@@ -5,7 +5,8 @@ const fs = require('fs')
 const LOCAL = process.env.LOCAL
 const endpoint = buildEndpoint(LOCAL)
 const resources = {    
-    'readings': '/readings'
+	'readings': '/readings',
+	'devices': '/devices'
 }
 
 describe('simple tests', function(done) {
@@ -46,6 +47,22 @@ describe('/readings', function(done) {
                 done(err)
 			})
     })
+})
+
+describe('/devices', function(done) {
+	it('GET should return a list of device ids', function(done) {
+		request.
+			get({
+				url: endpoint + resources.devices
+			})
+			.on('response', function(res) {
+				expect(res.statusCode).to.be.equal(200)
+				done()
+			})
+			.on('error', function(err) {
+				done(err)
+			})
+	})
 })
 
 function generateMockReading() {
