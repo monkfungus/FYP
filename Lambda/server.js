@@ -113,29 +113,32 @@ app.get('/devices', (req, res) => {
     res.status(200).send('Not yet implemented')
 })
 
+// return info stored about invidual device
 app.get('/devices/:id', (req, res) => {
     log(req)
-    console.log(req.params)
     res.status(200).send('Not yet implemented')
 })
 
 // return estimation of current location for device
 app.get('/devices:id/location', (req, res) => { 
     log(req)
-    res.send('Not yet implemented')
+    res.status(200).send('Not yet implemented')
 })
 
+// root endpoint, mainly used to show up status
 app.get('/', (req, res) => {
     log(req)
     res.send('hello there')
 })
 
+// logs request to console
 function log(req) {
     const now = new Date(Date.now())
     const timestamp = now.toISOString()
     console.log(`${timestamp} ${req.method} ${req.url} ${stringify(req.body)}`)
 }
 
+// convert JSON obj to string
 function stringify(obj) {
     const str = util.inspect(obj)
     return str
