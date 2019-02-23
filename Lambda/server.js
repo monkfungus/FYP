@@ -116,6 +116,7 @@ app.get('/devices', (req, res) => {
     const params = {
         TableName: table.devices,
         ProjectionExpression: 'id' // attributes we want in result
+        // TODO: return name too
     }
     console.log('Scanning table:/devices for all device ids')
     docClient.scan(params, function(err, data) {
@@ -136,7 +137,26 @@ app.get('/devices', (req, res) => {
 // return info stored about invidual device
 app.get('/devices/:id', (req, res) => {
     log(req)
-    res.status(200).send('Not yet implemented')
+    const id = req.params.id
+    const params = {
+        TableName: table.devices,
+        KeyConditionExpression: "id = :id",
+        ExpressionAttributeValues: {
+            ":id": id
+        }
+    }
+    console.log(`Querying table:/${table.devices} for device id ${id}`)
+    docClient.query(params, function(err, data) {
+        if (err) {
+            const errMsg = `Unable to find device ${id} Error: ${stringify(err)}`
+            console.error(errMsg)
+            res.status(500).send(errMsg)
+        } else {
+            console.log(`Found device id ${id}`)
+            const device = data.Items[0]
+            res.status(200).send({device: device})
+        } 
+    })
 })
 
 // return estimation of current location for device

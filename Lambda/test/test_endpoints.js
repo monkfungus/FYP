@@ -9,6 +9,7 @@ const resources = {
 	'devices': '/devices'
 }
 
+
 describe('simple tests', function(done) {
 	it('Should have an endpoint', function(done) {
 		console.log(`Endpoint: ${endpoint}`)
@@ -50,17 +51,60 @@ describe('/readings', function(done) {
 })
 
 describe('/devices', function(done) {
-	it('GET should return a list of device ids', function(done) {
-		request.
-			get({
+	it('GET /devices should return a list of devices', function(done) {
+		const url = endpoint + resources.devices
+		request
+			.get({
 				url: endpoint + resources.devices
 			})
 			.on('response', function(res) {
-				expect(res.statusCode).to.be.equal(200)
-				done()
+				res.setEncoding('utf8')
+				let body = []
+				res
+					.on('data', function(chunk) {
+						body += chunk
+					})
+					.on('end', function() {
+						body = JSON.parse(body)
+						expect(body.devices).to.not.be.equal(undefined)
+						expect(res.statusCode).to.be.equal(200)
+						done()
+					})	
+					.on('error', function(err) {
+						done(err)
+					})			
 			})
 			.on('error', function(err) {
 				done(err)
+			})
+	})
+	it('GET /devices/:id should return a specific device', function(done) {
+		// note this uses the first device returned from GET /devices
+		request
+			// get list of devices
+			.get({url: endpoint + resources.devices})
+			.on('response', function(outerRes) {
+				let body = []
+				outerRes
+					.on('data', function(chunk) {body += chunk})
+					.on('end', function() {
+						body = JSON.parse(body) // convert body to JSON
+						const deviceId = body.devices[0].id // get first device id
+						body = [] // clear body
+						request
+							.get({url: `${endpoint}${resources.devices}/${deviceId}`})
+							.on('response', function(innerRes) {
+								innerRes
+									.on('data', function(chunk) {body += chunk})
+									.on('end', function() {
+										expect(innerRes.statusCode).to.be.equal(200)
+										body = JSON.parse(body)
+										const device = body.device
+										expect(device).to.not.be.equal(undefined)
+										done()
+									})
+							})							
+					})
 			})
 	})
 })
