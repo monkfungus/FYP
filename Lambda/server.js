@@ -160,9 +160,28 @@ app.get('/devices/:id', (req, res) => {
 })
 
 // return estimation of current location for device
-app.get('/devices:id/location', (req, res) => { 
+app.get('/devices/:id/location', (req, res) => { 
     log(req)
-    res.status(200).send('Not yet implemented')
+    const id = req.params.id
+    const params = {
+        TableName: table.devices,
+        KeyConditionExpression: "id = :id",
+        ExpressionAttributeValues: {
+            ":id": id
+        }
+    }
+    console.log(`Querying table:/${table.devices} for device id ${id}`)
+    docClient.query(params, function(err, data) {
+        if (err) {
+            const errMsg = `Unable to find device ${id} Error: ${stringify(err)}`
+            console.error(errMsg)
+            res.status(500).send(errMsg)
+        } else {
+            console.log(`Found device id ${id}`)
+            const device = data.Items[0]
+            res.status(200).send({location: device.lastKnownLocation})
+        } 
+    })
 })
 
 // root endpoint, mainly used to show up status

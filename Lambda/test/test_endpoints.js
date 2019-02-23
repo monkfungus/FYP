@@ -107,6 +107,35 @@ describe('/devices', function(done) {
 					})
 			})
 	})
+	it('GET /devices/:id/location should return the estimated location for a specific device', function(done) {
+		// Gets a list of devices and queries the location for the first device found
+		request
+			// get list of devices
+			.get({url: endpoint + resources.devices})
+			.on('response', function(outerRes) {
+				let body = []
+				outerRes
+					.on('data', function(chunk) {body += chunk})
+					.on('end', function() {
+						body = JSON.parse(body) // convert body to JSON
+						const deviceId = body.devices[0].id // get first device id
+						body = [] // clear body
+						request
+							.get({url: `${endpoint}${resources.devices}/${deviceId}/location`})
+							.on('response', function(innerRes) {
+								innerRes
+									.on('data', function(chunk) {body += chunk})
+									.on('end', function() {
+										expect(innerRes.statusCode).to.be.equal(200)
+										body = JSON.parse(body)
+										const location = body.location
+										expect(location).to.not.be.equal(undefined)
+										done()
+									})
+							})							
+					})
+			})
+	})
 })
 
 function generateMockReading() {
