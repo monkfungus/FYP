@@ -28,12 +28,10 @@ app.post('/readings', (req, res) => {
         .then(() => {
             console.log('DB/readings.put: Success')
             // for each device:
-                // check if device already recorded in table, if not add it 
                 // if device already in devices
                     // update location
                 // else 
                     // add device with current location
-                    // update location
             reading.devices.forEach(device => {
                 console.log('Querying for device: ', device.address)
                 params = {
@@ -129,7 +127,7 @@ app.get('/devices', (req, res) => {
             data.Items.forEach(function(id) {
                 devices.push(id)
             })
-            console.log(`Found ${devices.length()} devices`)
+            console.log(`Found ${devices.length} devices`)
             res.status(200).send({'devices': devices})
         }
     })

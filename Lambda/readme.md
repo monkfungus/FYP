@@ -15,6 +15,7 @@ where `--proxy-module-name` is the name you want the lambda to be called
 To push up to AWS
 `claudia create --handler fyp-lambda.handler --deploy-proxy-api --region us-east-2 --policies policy.json`
 If upload is failing due to timeouts, use `--use-s3-bucket <bucket>`
+To use existing role `--role fyp-lambda-executor`
 
 If `claudia create` isn't run with the right permissions, will have to delete the role it created on aws
 can maybe also just specify the role to run 

@@ -7,10 +7,14 @@
         "dynamodb:DeleteItem",
         "dynamodb:GetItem",
         "dynamodb:PutItem",
-        "dynamodb:Scan"
+        "dynamodb:Scan",
+        "dynamodb:Query",
+        "dynamodb:UpdateItem"
       ],
       "Effect": "Allow",
-      "Resource": "arn:aws:dynamodb:us-east-2:088303344574:table/*"
+      "Resource": [
+        "arn:aws:dynamodb:us-east-2:088303344574:table/*"
+      ]
     }
   ]
 }
