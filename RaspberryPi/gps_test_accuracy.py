@@ -6,9 +6,18 @@ import serial
 from datetime import datetime, timezone
 import json
 
-RX = 10
-TX = 8
-readFreq = 1.0
+###
+# Read GPS updates from the GPS module and print to screen
+# 
+# To run while saving the output, run something like
+#   ./gps_test_accuracy >> output.txt 2>&1
+# which redirects stdout and stderr to output.txt so if Pi crashes 
+# we still have some results!
+###
+
+RX = 10 # RX Pin on Pi
+TX = 8 # TX Pin on Pi
+readFreq = 1.0 # how often to read (Hz)
 iter = 0
 readings = []
 
@@ -34,15 +43,6 @@ while True:
             reading['has_gps'] = False
             continue
         reading['has_gps'] = True
-        # Print out details about the fix like location, date, etc.
-        # print('=' * 40)  # Print a separator line.
-        # print('Fix timestamp: {}/{}/{} {:02}:{:02}:{:02}'.format(
-        #     gps.timestamp_utc.tm_mon,   # Grab parts of the time from the
-        #     gps.timestamp_utc.tm_mday,  # struct_time object that holds
-        #     gps.timestamp_utc.tm_year,  # the fix time.  Note you might
-        #     gps.timestamp_utc.tm_hour,  # not get all data like year, day,
-        #     gps.timestamp_utc.tm_min,   # month!
-        #     gps.timestamp_utc.tm_sec))
         gps_timestamp = '{}-{}-{}T{}:{}:{}+00:00'.format(
             gps.timestamp_utc.tm_year,
             gps.timestamp_utc.tm_mon,
@@ -52,31 +52,23 @@ while True:
             gps.timestamp_utc.tm_sec
         )
         reading['timestamp_gps'] = gps_timestamp
-        # print('Latitude: {0:.6f} degrees'.format(gps.latitude))
-        # print('Longitude: {0:.6f} degrees'.format(gps.longitude))
-        # print('Fix quality: {}'.format(gps.fix_quality))
         reading['latitude'] = gps.latitude
         reading['longitude'] = gps.longitude
         reading['fix_quality'] = gps.fix_quality
         # Some attributes beyond latitude, longitude and timestamp are optional
         # and might not be present.  Check if they're None before trying to use!
         if gps.satellites is not None:
-            # print('# satellites: {}'.format(gps.satellites))
             reading['num_satellites'] = gps.satellites
         if gps.altitude_m is not None:
-            # print('Altitude: {} meters'.format(gps.altitude_m))
             reading['altitude(m)'] = gps.altitude_m
         if gps.track_angle_deg is not None:
-            # print('Speed: {} knots'.format(gps.speed_knots))
             reading['speed(knots)'] = gps.speed_knots
         if gps.track_angle_deg is not None:
-            # print('Track angle: {} degrees'.format(gps.track_angle_deg))
             reading['track_angle(degrees)'] = gps.track_angle_deg
         if gps.horizontal_dilution is not None:
-            # print('Horizontal dilution: {}'.format(gps.horizontal_dilution))
             reading['horizontal_dilution'] = gps.horizontal_dilution
         if gps.height_geoid is not None:
-            # print('Height geo ID: {} meters'.format(gps.height_geoid))
             reading['height_geo_id(m)'] = gps.height_geoid
         readings.append(reading)
-        print(json.dumps(reading, indent=2))
+        # Print reading to screen in pretty JSON format
+        print(json.dumps(reading, indent=2)) 

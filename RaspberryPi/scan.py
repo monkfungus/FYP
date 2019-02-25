@@ -8,6 +8,11 @@ import busio
 import adafruit_gps
 import serial
 
+##
+# Runs continuously, scanning for devices at the current GPS location and
+# uploading to the url below.
+##
+
 url = 'https://5o6pmquqyi.execute-api.us-east-2.amazonaws.com/latest/readings'
 RX = 10 # Pins for serial port
 TX = 8
