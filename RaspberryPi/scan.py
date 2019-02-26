@@ -7,13 +7,21 @@ import board
 import busio
 import adafruit_gps
 import serial
+import os, sys
 
 ##
 # Runs continuously, scanning for devices at the current GPS location and
 # uploading to the url below.
 ##
 
-url = 'https://5o6pmquqyi.execute-api.us-east-2.amazonaws.com/latest/readings'
+if('FYP_ENDPOINT' in os.environ): 
+    # url = 'https://5o6pmquqyi.execute-api.us-east-2.amazonaws.com/latest/readings'
+    url = os.environ['FYP_ENDPOINT']
+else:
+    print('FYP_ENDPOINT not set. Exiting')
+    sys.exit(0)
+
+
 RX = 10 # Pins for serial port
 TX = 8
 readFreq = 5.0
@@ -49,7 +57,7 @@ while True:
         devices = []
         for addr, name in nearby_devices:
             newDevice = {}
-            newDevice['address'] = addr
+            newDevice['id'] = addr
             newDevice['name'] = name
             devices.append(newDevice)
             
