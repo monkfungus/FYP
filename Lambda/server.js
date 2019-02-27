@@ -32,13 +32,15 @@ app.post('/readings', (req, res) => {
                     // update location
                 // else 
                     // add device with current location
+            let devices = reading.devices
+            devices.push({id: reading.deviceId})
             reading.devices.forEach(device => {
-                console.log('Querying for device: ', device.address)
+                console.log('Querying for device: ', device.id)
                 params = {
                     TableName: table.devices,
-                    KeyConditionExpression: "id = :id",
+                    KeyConditionExpression: "deviceId = :id",
                     ExpressionAttributeValues: {
-                        ":id": device.address
+                        ":id": device.id
                     }
                 }
                 docClient.query(params, function(err, data) {
@@ -52,7 +54,7 @@ app.post('/readings', (req, res) => {
                             params = {
                                 TableName: table.devices,
                                 Key: {
-                                    "id": device.address
+                                    "deviceId": device.id
                                 },
                                 UpdateExpression: "set lastKnownLocation = :l, locationUpdateTimestamp = :t",
                                 ExpressionAttributeValues: {
@@ -61,13 +63,13 @@ app.post('/readings', (req, res) => {
                                 },
                                 ReturnValues: "UPDATED_NEW"
                             }
-                            console.log(`Updating device ${device.address} location to: ${stringify(reading.location)}`)
+                            console.log(`Updating device ${device.id} location to: ${stringify(reading.location)}`)
                             docClient.update(params, function(err, data) {
                                 if (err) {
                                     console.error("Unable to update device. Error: ", err)
                                     throw err
                                 } else {
-                                    console.log(`Updated device ${device.address} location to: ${stringify(reading.location)}`)
+                                    console.log(`Updated device ${device.id} location to: ${stringify(reading.location)}`)
                                 }
                             })
                         } else if (data.Items.length === 0) {
@@ -76,7 +78,7 @@ app.post('/readings', (req, res) => {
                             params = {
                                 TableName: table.devices,
                                 Item: {
-                                    "id": device.address,
+                                    "deviceId": device.id,
                                     "name": device.name,
                                     "lastKnownLocation": device.location,
                                     "locationUpdateTimestamp": reading.timestamp
@@ -115,10 +117,10 @@ app.get('/devices', (req, res) => {
      */
     const params = {
         TableName: table.devices,
-        ProjectionExpression: 'id' // attributes we want in result
+        ProjectionExpression: 'deviceId' // attributes we want in result
         // TODO: return name too
     }
-    console.log('Scanning table:/devices for all device ids')
+    console.log('Scanning table:/devices for all deviceIds')
     docClient.scan(params, function(err, data) {
         if (err) {
             console.error('Scanning table:/devices failed')
@@ -140,15 +142,15 @@ app.get('/devices/:id', (req, res) => {
     const id = req.params.id
     const params = {
         TableName: table.devices,
-        KeyConditionExpression: "id = :id",
+        KeyConditionExpression: "deviceId = :id",
         ExpressionAttributeValues: {
             ":id": id
         }
     }
-    console.log(`Querying table:/${table.devices} for device id ${id}`)
+    console.log(`Querying table:/${table.devices} for deviceId ${id}`)
     docClient.query(params, function(err, data) {
         if (err) {
-            const errMsg = `Unable to find device ${id} Error: ${stringify(err)}`
+            const errMsg = `Unable to find deviceId ${id} Error: ${stringify(err)}`
             console.error(errMsg)
             res.status(500).send(errMsg)
         } else {
@@ -165,15 +167,15 @@ app.get('/devices/:id/location', (req, res) => {
     const id = req.params.id
     const params = {
         TableName: table.devices,
-        KeyConditionExpression: "id = :id",
+        KeyConditionExpression: "deviceId = :id",
         ExpressionAttributeValues: {
             ":id": id
         }
     }
-    console.log(`Querying table:/${table.devices} for device id ${id}`)
+    console.log(`Querying table:/${table.devices} for deviceId ${id}`)
     docClient.query(params, function(err, data) {
         if (err) {
-            const errMsg = `Unable to find device ${id} Error: ${stringify(err)}`
+            const errMsg = `Unable to find deviceId ${id} Error: ${stringify(err)}`
             console.error(errMsg)
             res.status(500).send(errMsg)
         } else {

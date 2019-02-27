@@ -10,6 +10,7 @@ const resources = {
 }
 
 
+
 describe('simple tests', function(done) {
 	it('Should have an endpoint', function(done) {
 		console.log(`Endpoint: ${endpoint}`)
@@ -17,6 +18,7 @@ describe('simple tests', function(done) {
 	})
 })
 describe('/', function(done) {
+	this.timeout(5000) // 5 seconds
 	it(`GET should return "hello world"`, function(done) {
 		request
 			.get(endpoint)
@@ -32,6 +34,7 @@ describe('/', function(done) {
 })
 
 describe('/readings', function(done) {
+		this.timeout(5000) // 5 seconds
     it('should accept valid POST', function(done) {
         const payload = generateMockReading()
         request
@@ -51,6 +54,7 @@ describe('/readings', function(done) {
 })
 
 describe('/devices', function(done) {
+	this.timeout(5000) // 5 seconds
 	it('GET /devices should return a list of devices', function(done) {
 		const url = endpoint + resources.devices
 		request
@@ -78,7 +82,7 @@ describe('/devices', function(done) {
 				done(err)
 			})
 	})
-	it('GET /devices/:id should return a specific device', function(done) {
+	it('GET /devices/:deviceId should return a specific device', function(done) {
 		// note this uses the first device returned from GET /devices
 		request
 			// get list of devices
@@ -89,7 +93,10 @@ describe('/devices', function(done) {
 					.on('data', function(chunk) {body += chunk})
 					.on('end', function() {
 						body = JSON.parse(body) // convert body to JSON
-						const deviceId = body.devices[0].id // get first device id
+						// if (body.devices.length)
+						const device = body.devices[0] // get first device
+						expect(device.deviceId).to.not.equal(undefined) // table/:devices likely empty
+						const deviceId = device.deviceId // get first deviceId
 						body = [] // clear body
 						request
 							.get({url: `${endpoint}${resources.devices}/${deviceId}`})
@@ -107,7 +114,7 @@ describe('/devices', function(done) {
 					})
 			})
 	})
-	it('GET /devices/:id/location should return the estimated location for a specific device', function(done) {
+	it('GET /devices/:deviceId/location should return the estimated location for a specific device', function(done) {
 		// Gets a list of devices and queries the location for the first device found
 		request
 			// get list of devices
@@ -118,7 +125,10 @@ describe('/devices', function(done) {
 					.on('data', function(chunk) {body += chunk})
 					.on('end', function() {
 						body = JSON.parse(body) // convert body to JSON
-						const deviceId = body.devices[0].id // get first device id
+						// if (body.devices.length)
+						const device = body.devices[0] // get first device
+						expect(device.deviceId).to.not.equal(undefined) // table/:devices likely empty
+						const deviceId = device.deviceId // get first deviceId
 						body = [] // clear body
 						request
 							.get({url: `${endpoint}${resources.devices}/${deviceId}/location`})
@@ -142,9 +152,10 @@ function generateMockReading() {
     const now = new Date(Date.now())
     const timestamp = now.toISOString()
     let mockReading = {
+				"deviceId": "test_endpoint",
         "devices": [
           {
-            "address": "98:01:A7:B4:EF:50",
+            "id": "98:01:A7:B4:EF:50",
             "name": "dimitrim"
           }
         ],
