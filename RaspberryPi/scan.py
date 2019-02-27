@@ -8,6 +8,7 @@ import busio
 import adafruit_gps
 import serial
 import os, sys
+import re, uuid
 
 ##
 # Runs continuously, scanning for devices at the current GPS location and
@@ -25,6 +26,9 @@ else:
 RX = 10 # Pins for serial port
 TX = 8
 readFreq = 5.0
+
+# local bluetooth address
+deviceId = ':'.join(re.findall('..', '%012x' % uuid.getnode())).upper()
 
 # create serial connection to GPS
 uart = serial.Serial("/dev/ttyS0", baudrate=9600, timeout=3000)
@@ -69,6 +73,7 @@ while True:
         
         # build payload
         payload = {}
+        payload['deviceId'] = deviceId
         payload['timestamp'] = timestamp
         payload['location'] = location
         payload['devices'] = devices
@@ -81,4 +86,4 @@ while True:
         except requests.exceptions.ConnectionError as e:
             print('ConnectionError: ', e)
         else:
-            print('Status: %s', r.status_code)
+            print('Status: ', r.status_code)
