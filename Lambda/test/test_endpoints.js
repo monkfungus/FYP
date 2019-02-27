@@ -9,14 +9,13 @@ const resources = {
 	'devices': '/devices'
 }
 
-
-
 describe('simple tests', function(done) {
 	it('Should have an endpoint', function(done) {
 		console.log(`Endpoint: ${endpoint}`)
 		done()
 	})
 })
+
 describe('/', function(done) {
 	this.timeout(5000) // 5 seconds
 	it(`GET should return "hello world"`, function(done) {
@@ -71,6 +70,8 @@ describe('/devices', function(done) {
 					.on('end', function() {
 						body = JSON.parse(body)
 						expect(body.devices).to.not.be.equal(undefined)
+						expect(body.devices[0].deviceId).to.not.be.equal(undefined)
+						expect(body.devices[0].name).to.not.be.equal(undefined)
 						expect(res.statusCode).to.be.equal(200)
 						done()
 					})	
@@ -93,7 +94,6 @@ describe('/devices', function(done) {
 					.on('data', function(chunk) {body += chunk})
 					.on('end', function() {
 						body = JSON.parse(body) // convert body to JSON
-						// if (body.devices.length)
 						const device = body.devices[0] // get first device
 						expect(device.deviceId).to.not.equal(undefined) // table/:devices likely empty
 						const deviceId = device.deviceId // get first deviceId
@@ -155,7 +155,7 @@ function generateMockReading() {
 				"deviceId": "test_endpoint",
         "devices": [
           {
-            "id": "98:01:A7:B4:EF:50",
+            "deviceId": "98:01:A7:B4:EF:50",
             "name": "dimitrim"
           }
         ],
