@@ -61,7 +61,7 @@ while True:
         devices = []
         for addr, name in nearby_devices:
             newDevice = {}
-            newDevice['id'] = addr
+            newDevice['deviceId'] = addr
             newDevice['name'] = name
             devices.append(newDevice)
             
