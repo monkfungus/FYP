@@ -22,7 +22,10 @@
             "runtimeArgs": [
                 "${workspaceFolder}/Lambda/test"
             ],
-            "outputCapture": "std"
+            "outputCapture": "std",
+            "env": {
+                "LOCAL": "True"
+            }
         }
     ]
 }
