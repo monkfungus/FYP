@@ -157,6 +157,9 @@
 						<Parameter>
 							<Name><![CDATA[scanRadius]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[deviceId]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -219,6 +222,12 @@
 						</GenericParameterSubstituteReference>
 					</GenericParameterSubstitute>
 					<Parameters>
+						<Parameter>
+							<Name><![CDATA[deviceId]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[name]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -428,6 +437,11 @@
 			<Id>1552042571859</Id>
 			<Name><![CDATA[Forklift]]></Name>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
+			<Import><![CDATA[import org.json.simple.JSONObject;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+import java.util.Date;]]></Import>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1552042571858</Id>
@@ -571,6 +585,30 @@
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1552223371827</Id>
+					<Name><![CDATA[deviceId]]></Name>
+					<X>-90</X><Y>130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["test_forklift"]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1552223371825</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 			</Variables>
 			<StatechartElements>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
@@ -699,16 +737,26 @@
 					</Points>
 					<IconOffset>20.0</IconOffset>
 					<Properties Source="1552044758352" Target="1552044758352" Trigger="timeout">
-						<Action><![CDATA[int count = 0;
-double lat, lng;
+						<Action><![CDATA[ArrayList<HashMap> devices = new ArrayList();
 for( Trailer t : main.trailers ) { //go through all trailers in the area
 	if( distanceTo( t, METER ) < scanRadius) { //if it is within scan radius
-		++count;	
+		HashMap<String, String> device = new HashMap();
+		device.put("deviceId", t.deviceId);
+		device.put("name", t.name);
 	}
 } 
-lat = getLatitude();
-lng = getLongitude();
-System.out.printf("Can see %d trailers at lat: %s, long: %s%n", count, lat, lng);]]></Action>
+
+HashMap<String, String> lcn = new HashMap<String, String>();
+lcn.put("latitude", Double.toString(getLatitude()));
+lcn.put("longitude", Double.toString(getLongitude()));
+
+TimeZone tx = TimeZone.getTimeZone("UTC");
+JSONObject reading = new JSONObject();
+reading.put("deviceId", deviceId);
+reading.put("location", lcn);
+reading.put("devices", devices);
+System.out.println(reading);
+]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[scanInterval]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
@@ -968,6 +1016,57 @@ System.out.printf("Can see %d trailers at lat: %s, long: %s%n", count, lat, lng)
 				<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
 			</ScaleRuler>
 			<ConnectionsId>1552132000772</ConnectionsId>
+			<Variables>
+				<Variable Class="Parameter">
+					<Id>1552221102377</Id>
+					<Name><![CDATA[deviceId]]></Name>
+					<X>40</X><Y>40</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["testTrailerId"]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1552221102374</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1552221302954</Id>
+					<Name><![CDATA[name]]></Name>
+					<X>40</X><Y>60</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["testTrailerName"
+]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1552221302952</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+			</Variables>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1552132000772</Id>
@@ -1150,5 +1249,10 @@ System.out.printf("Can see %d trailers at lat: %s, long: %s%n", count, lat, lng)
 			</ModelTimeProperties>
 		</SimulationExperiment>	
 	</Experiments>
+	<ClassPathEntry>
+		<Location><![CDATA[json-simple-1.1.1.jar]]></Location>
+		<Imported>false</Imported>
+		<Folder>false</Folder>
+	</ClassPathEntry>
 </Model>
 </AnyLogicWorkspace>
