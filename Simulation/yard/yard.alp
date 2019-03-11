@@ -1483,17 +1483,17 @@ return timestamp;]]></Body>
 		</SimulationExperiment>	
 	</Experiments>
 	<ClassPathEntry>
-		<Location><![CDATA[json-simple-1.1.1.jar]]></Location>
+		<Location><![CDATA[dependancies/httpclient-4.5.7.jar]]></Location>
 		<Imported>false</Imported>
 		<Folder>false</Folder>
 	</ClassPathEntry>
 	<ClassPathEntry>
-		<Location><![CDATA[../httpcomponents-client-4.5.7/lib/httpclient-4.5.7.jar]]></Location>
+		<Location><![CDATA[dependancies/httpcore-4.4.11.jar]]></Location>
 		<Imported>false</Imported>
 		<Folder>false</Folder>
 	</ClassPathEntry>
 	<ClassPathEntry>
-		<Location><![CDATA[../httpcomponents-client-4.5.7/lib/httpcore-4.4.11.jar]]></Location>
+		<Location><![CDATA[dependancies/json-simple-1.1.1.jar]]></Location>
 		<Imported>false</Imported>
 		<Folder>false</Folder>
 	</ClassPathEntry>
