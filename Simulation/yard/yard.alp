@@ -161,10 +161,16 @@
 							<Name><![CDATA[deviceId]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[endpoint]]></Name>
+							<Name><![CDATA[readingsEndpoint]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[rootEndpoint]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[superSpeed]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[normalSpeed]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -292,8 +298,8 @@
 					<Height>720</Height>
 					<GISShapes>
 					</GISShapes>
-					<Latitude>53.291044093360256</Latitude>
-					<Longitude>-9.070909264867788</Longitude>
+					<Latitude>53.2908</Latitude>
+					<Longitude>-9.07105</Longitude>
 					<Scale>632</Scale>
 					<BorderColor>-4144960</BorderColor>
 					<FillColor>-1</FillColor>
@@ -413,8 +419,8 @@
 					<ScaleType>AUTOMATICALLY_CALCULATED</ScaleType>
 					<GISScaleForRealEmbeddedObjectPresentationSize>10000</GISScaleForRealEmbeddedObjectPresentationSize>
 					<GISScaleForFixedEmbeddedObjectPresentationSize>1000000000</GISScaleForFixedEmbeddedObjectPresentationSize>
-					<Latitude>53.290902</Latitude>
-					<Longitude>-9.070911</Longitude>
+					<Latitude>53.290785835734006</Latitude>
+					<Longitude>-9.07105</Longitude>
 				</EmbeddedObjectPresentation>
 				<EmbeddedObjectPresentation>
 					<Id>1552132000791</Id>
@@ -477,7 +483,7 @@ import org.apache.http.entity.StringEntity;]]></Import>
 				<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
 				<RotateAnimationVertically>false</RotateAnimationVertically>
 				<VelocityCode Class="CodeUnitValue">
-					<Code><![CDATA[10]]></Code>
+					<Code><![CDATA[normalSpeed]]></Code>
 					<Unit Class="SpeedUnits"><![CDATA[KPH]]></Unit>
 				</VelocityCode>
 				<PhysicalLength Class="CodeUnitValue">
@@ -549,7 +555,7 @@ import org.apache.http.entity.StringEntity;]]></Import>
 				<Variable Class="Parameter">
 					<Id>1552133173198</Id>
 					<Name><![CDATA[scanInterval]]></Name>
-					<X>-90</X><Y>150</Y>
+					<X>-110</X><Y>40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -575,7 +581,7 @@ import org.apache.http.entity.StringEntity;]]></Import>
 				<Variable Class="Parameter">
 					<Id>1552133230259</Id>
 					<Name><![CDATA[scanRadius]]></Name>
-					<X>-90</X><Y>170</Y>
+					<X>-110</X><Y>60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -601,7 +607,7 @@ import org.apache.http.entity.StringEntity;]]></Import>
 				<Variable Class="Parameter">
 					<Id>1552223371827</Id>
 					<Name><![CDATA[deviceId]]></Name>
-					<X>-90</X><Y>130</Y>
+					<X>-110</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -624,8 +630,8 @@ import org.apache.http.entity.StringEntity;]]></Import>
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1552321978580</Id>
-					<Name><![CDATA[endpoint]]></Name>
-					<X>-90</X><Y>190</Y>
+					<Name><![CDATA[readingsEndpoint]]></Name>
+					<X>-110</X><Y>80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -639,6 +645,7 @@ import org.apache.http.entity.StringEntity;]]></Import>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1552321978578</Id>
+							<Label><![CDATA[endpoint]]></Label>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -649,7 +656,7 @@ import org.apache.http.entity.StringEntity;]]></Import>
 				<Variable Class="Parameter">
 					<Id>1552325486074</Id>
 					<Name><![CDATA[rootEndpoint]]></Name>
-					<X>-90</X><Y>210</Y>
+					<X>-110</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -670,6 +677,58 @@ import org.apache.http.entity.StringEntity;]]></Import>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1552327831779</Id>
+					<Name><![CDATA[superSpeed]]></Name>
+					<X>-110</X><Y>120</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[]]></Type>
+						<UnitType><![CDATA[VELOCITY]]></UnitType>
+						<UnitOfValue Class="SpeedUnits"><![CDATA[KPH]]></UnitOfValue>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeUnitValue">
+							<Code><![CDATA[1000]]></Code>
+							<Unit Class="SpeedUnits"><![CDATA[KPH]]></Unit>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1552327831777</Id>
+							<EditorContolType>UNIT_EDITOR</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1552327922600</Id>
+					<Name><![CDATA[normalSpeed]]></Name>
+					<X>-110</X><Y>140</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[]]></Type>
+						<UnitType><![CDATA[VELOCITY]]></UnitType>
+						<UnitOfValue Class="SpeedUnits"><![CDATA[KPH]]></UnitOfValue>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeUnitValue">
+							<Code><![CDATA[10]]></Code>
+							<Unit Class="SpeedUnits"><![CDATA[KPH]]></Unit>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1552327922598</Id>
+							<EditorContolType>UNIT_EDITOR</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 			</Variables>
 			<StatechartElements>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
@@ -681,20 +740,22 @@ import org.apache.http.entity.StringEntity;]]></Import>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="100" Height="30">
-						<EntryAction><![CDATA[moveTo(main.startNode);]]></EntryAction>
+						<EntryAction><![CDATA[moveTo(main.startNode);
+setSpeed(superSpeed, SpeedUnits.valueOf("KPH"));]]></EntryAction>
 						<FillColor/>
 					</Properties>
 				</StatechartElement>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1552044758352</Id>
 					<Name><![CDATA[toEndNode]]></Name>
-					<X>90</X><Y>180</Y>
+					<X>70</X><Y>180</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties Width="100" Height="70">
-						<EntryAction><![CDATA[moveTo(main.endNode);]]></EntryAction>
+					<Properties Width="140" Height="70">
+						<EntryAction><![CDATA[setSpeed(normalSpeed, SpeedUnits.valueOf("KPH"));
+moveTo(main.endNode);]]></EntryAction>
 						<FillColor/>
 					</Properties>
 				</StatechartElement>
@@ -786,44 +847,21 @@ import org.apache.http.entity.StringEntity;]]></Import>
 				</StatechartElement>
 				<StatechartElement Class="Transition" ParentState="toEndNode" ParentStateId="1552044758352">
 					<Id>1552132223107</Id>
-					<Name><![CDATA[Scan]]></Name>
-					<X>90</X><Y>210</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+					<Name><![CDATA[scanAndUpload]]></Name>
+					<X>70</X><Y>210</Y>
+					<Label><X>25</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>79</X><Y>40</Y></Point>
+						<Point><X>40</X><Y>40</Y></Point>
 					</Points>
-					<IconOffset>20.0</IconOffset>
+					<IconOffset>30.0</IconOffset>
 					<Properties Source="1552044758352" Target="1552044758352" Trigger="timeout">
-						<Action><![CDATA[ArrayList<HashMap> devices = new ArrayList();
-for( Trailer t : main.trailers ) { //go through all trailers in the simulation
-	if( distanceTo( t, METER ) < scanRadius) { //if it is within scan radius
-		HashMap<String, String> device = new HashMap();
-		device.put("deviceId", t.deviceId);
-		device.put("name", t.name);
-		devices.add(device);
-	}
-} 
-
-HashMap<String, String> lcn = new HashMap<String, String>();
-lcn.put("latitude", Double.toString(getLatitude()));
-lcn.put("longitude", Double.toString(getLongitude()));
-
-DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:sss'Z'");
-df.setTimeZone(TimeZone.getTimeZone("UTC"));
-String timestamp = df.format(new Date());
-
-JSONObject reading = new JSONObject();
-reading.put("deviceId", deviceId);
-reading.put("location", lcn);
-reading.put("devices", devices);
-reading.put("timestamp", timestamp);
+						<Action><![CDATA[JSONObject reading = takeReading();
 System.out.println(reading);
-
-Boolean success = uploadReading(reading);]]></Action>
+Boolean success = uploadReading(reading); ]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[scanInterval]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
@@ -847,7 +885,7 @@ Boolean success = uploadReading(reading);]]></Action>
 					<ReturnType><![CDATA[boolean]]></ReturnType>
 					<Id>1552323481009</Id>
 					<Name><![CDATA[uploadReading]]></Name>
-					<X>340</X><Y>70</Y>
+					<X>290</X><Y>70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -858,7 +896,7 @@ Boolean success = uploadReading(reading);]]></Action>
 					</Parameter>
 					<Body><![CDATA[try {
 	CloseableHttpClient httpClient = HttpClients.createDefault();
-	HttpPost post = new HttpPost(endpoint);
+	HttpPost post = new HttpPost(readingsEndpoint);
 	StringEntity data = new StringEntity(
 		reading.toString(),
 		"application/json",
@@ -880,7 +918,7 @@ Boolean success = uploadReading(reading);]]></Action>
 					<ReturnType><![CDATA[boolean]]></ReturnType>
 					<Id>1552325442326</Id>
 					<Name><![CDATA[testServerConnection]]></Name>
-					<X>340</X><Y>40</Y>
+					<X>290</X><Y>40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -898,6 +936,75 @@ Boolean success = uploadReading(reading);]]></Action>
 } finally {
 
 }]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[ArrayList<HashMap>]]></ReturnType>
+					<Id>1552326217809</Id>
+					<Name><![CDATA[scanForNearbyDevices]]></Name>
+					<X>290</X><Y>100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[ArrayList<HashMap> devices = new ArrayList();
+for( Trailer t : main.trailers ) { //go through all trailers in the simulation
+	if( distanceTo( t, METER ) < scanRadius) { //if it is within scan radius
+		HashMap<String, String> device = new HashMap();
+		device.put("deviceId", t.deviceId);
+		device.put("name", t.name);
+		devices.add(device);
+	}
+} 
+return devices;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[JSONObject]]></ReturnType>
+					<Id>1552326435008</Id>
+					<Name><![CDATA[takeReading]]></Name>
+					<X>290</X><Y>210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[JSONObject reading = new JSONObject();
+reading.put("deviceId", deviceId);
+reading.put("location", getGPSLocation());
+reading.put("devices", scanForNearbyDevices());
+reading.put("timestamp", getTimestamp());
+return reading;
+]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[HashMap<String, String>]]></ReturnType>
+					<Id>1552326511432</Id>
+					<Name><![CDATA[getGPSLocation]]></Name>
+					<X>290</X><Y>130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[HashMap<String, String> lcn = new HashMap<String, String>();
+lcn.put("latitude", Double.toString(getLatitude()));
+lcn.put("longitude", Double.toString(getLongitude()));
+return lcn;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[String]]></ReturnType>
+					<Id>1552326660522</Id>
+					<Name><![CDATA[getTimestamp]]></Name>
+					<X>290</X><Y>160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:sss'Z'");
+df.setTimeZone(TimeZone.getTimeZone("UTC"));
+String timestamp = df.format(new Date());
+return timestamp;]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
