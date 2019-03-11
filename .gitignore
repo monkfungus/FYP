@@ -2,3 +2,6 @@
 ~$*.doc
 ~$*.docx
 */node_modules/*
+*.alp.autosave
+Simulation/*/dependencies/*
+Simulation/httpcomponents-client-4.5.7/*

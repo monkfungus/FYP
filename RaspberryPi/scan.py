@@ -7,11 +7,28 @@ import board
 import busio
 import adafruit_gps
 import serial
+import os, sys
+import re, uuid
 
-url = 'https://5o6pmquqyi.execute-api.us-east-2.amazonaws.com/latest/readings'
+##
+# Runs continuously, scanning for devices at the current GPS location and
+# uploading to the url below.
+##
+
+if('FYP_ENDPOINT' in os.environ): 
+    # url = 'https://5o6pmquqyi.execute-api.us-east-2.amazonaws.com/latest/readings'
+    url = os.environ['FYP_ENDPOINT']
+else:
+    print('FYP_ENDPOINT not set. Exiting')
+    sys.exit(0)
+
+
 RX = 10 # Pins for serial port
 TX = 8
 readFreq = 5.0
+
+# local bluetooth address
+deviceId = ':'.join(re.findall('..', '%012x' % uuid.getnode())).upper()
 
 # create serial connection to GPS
 uart = serial.Serial("/dev/ttyS0", baudrate=9600, timeout=3000)
@@ -44,7 +61,7 @@ while True:
         devices = []
         for addr, name in nearby_devices:
             newDevice = {}
-            newDevice['address'] = addr
+            newDevice['deviceId'] = addr
             newDevice['name'] = name
             devices.append(newDevice)
             
@@ -56,6 +73,7 @@ while True:
         
         # build payload
         payload = {}
+        payload['deviceId'] = deviceId
         payload['timestamp'] = timestamp
         payload['location'] = location
         payload['devices'] = devices
@@ -68,4 +86,4 @@ while True:
         except requests.exceptions.ConnectionError as e:
             print('ConnectionError: ', e)
         else:
-            print('Status: %s', r.status_code)
+            print('Status: ', r.status_code)

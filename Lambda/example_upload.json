@@ -1,0 +1,14 @@
+{
+    "deviceId": "id of sending device",
+    "timestamp": "",
+    "location": {
+        "latitude": "",
+        "longitude": ""
+    },
+    "devices": [
+        {
+            "id": "",
+            "name": ""
+        }
+    ]
+}
