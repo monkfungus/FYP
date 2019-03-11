@@ -160,6 +160,12 @@
 						<Parameter>
 							<Name><![CDATA[deviceId]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[endpoint]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[rootEndpoint]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -441,7 +447,14 @@
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
-import java.util.Date;]]></Import>
+import java.util.Date;
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.entity.StringEntity;]]></Import>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1552042571858</Id>
@@ -609,6 +622,54 @@ import java.util.Date;]]></Import>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1552321978580</Id>
+					<Name><![CDATA[endpoint]]></Name>
+					<X>-90</X><Y>190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["https://mkemiiguo5.execute-api.us-east-2.amazonaws.com/latest/readings"]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1552321978578</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1552325486074</Id>
+					<Name><![CDATA[rootEndpoint]]></Name>
+					<X>-90</X><Y>210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["https://mkemiiguo5.execute-api.us-east-2.amazonaws.com/latest/"]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1552325486072</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 			</Variables>
 			<StatechartElements>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
@@ -738,11 +799,12 @@ import java.util.Date;]]></Import>
 					<IconOffset>20.0</IconOffset>
 					<Properties Source="1552044758352" Target="1552044758352" Trigger="timeout">
 						<Action><![CDATA[ArrayList<HashMap> devices = new ArrayList();
-for( Trailer t : main.trailers ) { //go through all trailers in the area
+for( Trailer t : main.trailers ) { //go through all trailers in the simulation
 	if( distanceTo( t, METER ) < scanRadius) { //if it is within scan radius
 		HashMap<String, String> device = new HashMap();
 		device.put("deviceId", t.deviceId);
 		device.put("name", t.name);
+		devices.add(device);
 	}
 } 
 
@@ -750,13 +812,18 @@ HashMap<String, String> lcn = new HashMap<String, String>();
 lcn.put("latitude", Double.toString(getLatitude()));
 lcn.put("longitude", Double.toString(getLongitude()));
 
-TimeZone tx = TimeZone.getTimeZone("UTC");
+DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:sss'Z'");
+df.setTimeZone(TimeZone.getTimeZone("UTC"));
+String timestamp = df.format(new Date());
+
 JSONObject reading = new JSONObject();
 reading.put("deviceId", deviceId);
 reading.put("location", lcn);
 reading.put("devices", devices);
+reading.put("timestamp", timestamp);
 System.out.println(reading);
-]]></Action>
+
+Boolean success = uploadReading(reading);]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[scanInterval]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
@@ -774,6 +841,65 @@ System.out.println(reading);
 					</Properties>	
 				</StatechartElement>
 			</StatechartElements>
+			<Functions>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[boolean]]></ReturnType>
+					<Id>1552323481009</Id>
+					<Name><![CDATA[uploadReading]]></Name>
+					<X>340</X><Y>70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[reading]]></Name>
+						<Type><![CDATA[JSONObject]]></Type>
+					</Parameter>
+					<Body><![CDATA[try {
+	CloseableHttpClient httpClient = HttpClients.createDefault();
+	HttpPost post = new HttpPost(endpoint);
+	StringEntity data = new StringEntity(
+		reading.toString(),
+		"application/json",
+		"UTF-8");
+	post.setEntity(data);
+	CloseableHttpResponse res = httpClient.execute(post);
+	System.out.println(res.getStatusLine());
+	HttpEntity entity = res.getEntity();
+	return true;
+} catch (Exception e) {
+	System.out.println("Exception" + e.getMessage());
+	return false;
+} finally {
+
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[boolean]]></ReturnType>
+					<Id>1552325442326</Id>
+					<Name><![CDATA[testServerConnection]]></Name>
+					<X>340</X><Y>40</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[try {
+	CloseableHttpClient httpClient = HttpClients.createDefault();
+	HttpGet req = new HttpGet(rootEndpoint);
+	CloseableHttpResponse res = httpClient.execute(req);
+	System.out.println(res.getStatusLine());
+	HttpEntity entity = res.getEntity();
+	return true;
+} catch (Exception e) {
+	System.out.println("Exception" + e.getMessage());
+	return false;
+} finally {
+
+}]]></Body>
+				</Function>
+			</Functions>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1552042571855</Id>
@@ -1251,6 +1377,16 @@ System.out.println(reading);
 	</Experiments>
 	<ClassPathEntry>
 		<Location><![CDATA[json-simple-1.1.1.jar]]></Location>
+		<Imported>false</Imported>
+		<Folder>false</Folder>
+	</ClassPathEntry>
+	<ClassPathEntry>
+		<Location><![CDATA[../httpcomponents-client-4.5.7/lib/httpclient-4.5.7.jar]]></Location>
+		<Imported>false</Imported>
+		<Folder>false</Folder>
+	</ClassPathEntry>
+	<ClassPathEntry>
+		<Location><![CDATA[../httpcomponents-client-4.5.7/lib/httpcore-4.4.11.jar]]></Location>
 		<Imported>false</Imported>
 		<Folder>false</Folder>
 	</ClassPathEntry>
