@@ -152,25 +152,22 @@
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
-							<Name><![CDATA[scanInterval]]></Name>
+							<Name><![CDATA[name]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[scanRadius]]></Name>
+							<Name><![CDATA[bluetoothRange]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[parameter]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[deviceId]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[readingsEndpoint]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[rootEndpoint]]></Name>
+							<Name><![CDATA[normalSpeed]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[superSpeed]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[normalSpeed]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -235,10 +232,16 @@
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
-							<Name><![CDATA[deviceId]]></Name>
+							<Name><![CDATA[bluetoothRange]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[name]]></Name>
+							<Name><![CDATA[parameter]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[normalSpeed]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[superSpeed]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -294,13 +297,13 @@
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>1000</Width>
-					<Height>720</Height>
+					<Width>720</Width>
+					<Height>400</Height>
 					<GISShapes>
 					</GISShapes>
-					<Latitude>53.2908</Latitude>
-					<Longitude>-9.07105</Longitude>
-					<Scale>632</Scale>
+					<Latitude>53.29112878543297</Latitude>
+					<Longitude>-9.070612746682738</Longitude>
+					<Scale>1264</Scale>
 					<BorderColor>-4144960</BorderColor>
 					<FillColor>-1</FillColor>
 					<ShowTiles>true</ShowTiles>
@@ -449,18 +452,40 @@
 			<Id>1552042571859</Id>
 			<Name><![CDATA[Forklift]]></Name>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
-			<Import><![CDATA[import org.json.simple.JSONObject;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.TimeZone;
-import java.util.Date;
-import org.apache.http.HttpEntity;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.entity.StringEntity;]]></Import>
+			<ExtendsReference>
+				<PackageName><![CDATA[yard]]></PackageName>
+				<ClassName><![CDATA[SmartDevice]]></ClassName>
+			</ExtendsReference>
+			<Parameters>
+				<Parameter>
+					<Name><![CDATA[deviceId]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[name]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[bluetoothRange]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[parameter]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[normalSpeed]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[superSpeed]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[scanInterval]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[readingsEndpoint]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[rootEndpoint]]></Name>
+				</Parameter>
+			</Parameters>
+			<StartupCode><![CDATA[normalSpeed = 10;]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1552042571858</Id>
@@ -551,185 +576,6 @@ import org.apache.http.entity.StringEntity;]]></Import>
 				<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
 			</ScaleRuler>
 			<ConnectionsId>1552042571855</ConnectionsId>
-			<Variables>
-				<Variable Class="Parameter">
-					<Id>1552133173198</Id>
-					<Name><![CDATA[scanInterval]]></Name>
-					<X>-110</X><Y>40</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[]]></Type>
-						<UnitType><![CDATA[TIME]]></UnitType>
-						<UnitOfValue Class="TimeUnits"><![CDATA[SECOND]]></UnitOfValue>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1552133173196</Id>
-							<EditorContolType>UNIT_EDITOR</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1552133230259</Id>
-					<Name><![CDATA[scanRadius]]></Name>
-					<X>-110</X><Y>60</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[]]></Type>
-						<UnitType><![CDATA[LENGTH]]></UnitType>
-						<UnitOfValue Class="LengthUnits"><![CDATA[METER]]></UnitOfValue>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeUnitValue">
-							<Code><![CDATA[15]]></Code>
-							<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1552133230257</Id>
-							<EditorContolType>UNIT_EDITOR</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1552223371827</Id>
-					<Name><![CDATA[deviceId]]></Name>
-					<X>-110</X><Y>20</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[String]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA["test_forklift"]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1552223371825</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1552321978580</Id>
-					<Name><![CDATA[readingsEndpoint]]></Name>
-					<X>-110</X><Y>80</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[String]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA["https://mkemiiguo5.execute-api.us-east-2.amazonaws.com/latest/readings"]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1552321978578</Id>
-							<Label><![CDATA[endpoint]]></Label>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1552325486074</Id>
-					<Name><![CDATA[rootEndpoint]]></Name>
-					<X>-110</X><Y>100</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[String]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA["https://mkemiiguo5.execute-api.us-east-2.amazonaws.com/latest/"]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1552325486072</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1552327831779</Id>
-					<Name><![CDATA[superSpeed]]></Name>
-					<X>-110</X><Y>120</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[]]></Type>
-						<UnitType><![CDATA[VELOCITY]]></UnitType>
-						<UnitOfValue Class="SpeedUnits"><![CDATA[KPH]]></UnitOfValue>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeUnitValue">
-							<Code><![CDATA[1000]]></Code>
-							<Unit Class="SpeedUnits"><![CDATA[KPH]]></Unit>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1552327831777</Id>
-							<EditorContolType>UNIT_EDITOR</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1552327922600</Id>
-					<Name><![CDATA[normalSpeed]]></Name>
-					<X>-110</X><Y>140</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[]]></Type>
-						<UnitType><![CDATA[VELOCITY]]></UnitType>
-						<UnitOfValue Class="SpeedUnits"><![CDATA[KPH]]></UnitOfValue>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeUnitValue">
-							<Code><![CDATA[10]]></Code>
-							<Unit Class="SpeedUnits"><![CDATA[KPH]]></Unit>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1552327922598</Id>
-							<EditorContolType>UNIT_EDITOR</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-			</Variables>
 			<StatechartElements>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1552044693232</Id>
@@ -847,7 +693,7 @@ moveTo(main.endNode);]]></EntryAction>
 				</StatechartElement>
 				<StatechartElement Class="Transition" ParentState="toEndNode" ParentStateId="1552044758352">
 					<Id>1552132223107</Id>
-					<Name><![CDATA[scanAndUpload]]></Name>
+					<Name><![CDATA[runScan]]></Name>
 					<X>70</X><Y>210</Y>
 					<Label><X>25</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -859,9 +705,7 @@ moveTo(main.endNode);]]></EntryAction>
 					</Points>
 					<IconOffset>30.0</IconOffset>
 					<Properties Source="1552044758352" Target="1552044758352" Trigger="timeout">
-						<Action><![CDATA[JSONObject reading = takeReading();
-System.out.println(reading);
-Boolean success = uploadReading(reading); ]]></Action>
+						<Action><![CDATA[Boolean success = scanAndUpload();]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[scanInterval]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
@@ -879,134 +723,6 @@ Boolean success = uploadReading(reading); ]]></Action>
 					</Properties>	
 				</StatechartElement>
 			</StatechartElements>
-			<Functions>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[boolean]]></ReturnType>
-					<Id>1552323481009</Id>
-					<Name><![CDATA[uploadReading]]></Name>
-					<X>290</X><Y>70</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Parameter>
-						<Name><![CDATA[reading]]></Name>
-						<Type><![CDATA[JSONObject]]></Type>
-					</Parameter>
-					<Body><![CDATA[try {
-	CloseableHttpClient httpClient = HttpClients.createDefault();
-	HttpPost post = new HttpPost(readingsEndpoint);
-	StringEntity data = new StringEntity(
-		reading.toString(),
-		"application/json",
-		"UTF-8");
-	post.setEntity(data);
-	CloseableHttpResponse res = httpClient.execute(post);
-	System.out.println(res.getStatusLine());
-	HttpEntity entity = res.getEntity();
-	return true;
-} catch (Exception e) {
-	System.out.println("Exception" + e.getMessage());
-	return false;
-} finally {
-
-}]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[boolean]]></ReturnType>
-					<Id>1552325442326</Id>
-					<Name><![CDATA[testServerConnection]]></Name>
-					<X>290</X><Y>40</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[try {
-	CloseableHttpClient httpClient = HttpClients.createDefault();
-	HttpGet req = new HttpGet(rootEndpoint);
-	CloseableHttpResponse res = httpClient.execute(req);
-	System.out.println(res.getStatusLine());
-	HttpEntity entity = res.getEntity();
-	return true;
-} catch (Exception e) {
-	System.out.println("Exception" + e.getMessage());
-	return false;
-} finally {
-
-}]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[ArrayList<HashMap>]]></ReturnType>
-					<Id>1552326217809</Id>
-					<Name><![CDATA[scanForNearbyDevices]]></Name>
-					<X>290</X><Y>100</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[ArrayList<HashMap> devices = new ArrayList();
-for( Trailer t : main.trailers ) { //go through all trailers in the simulation
-	if( distanceTo( t, METER ) < scanRadius) { //if it is within scan radius
-		HashMap<String, String> device = new HashMap();
-		device.put("deviceId", t.deviceId);
-		device.put("name", t.name);
-		devices.add(device);
-	}
-} 
-return devices;]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[JSONObject]]></ReturnType>
-					<Id>1552326435008</Id>
-					<Name><![CDATA[takeReading]]></Name>
-					<X>290</X><Y>210</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[JSONObject reading = new JSONObject();
-reading.put("deviceId", deviceId);
-reading.put("location", getGPSLocation());
-reading.put("devices", scanForNearbyDevices());
-reading.put("timestamp", getTimestamp());
-return reading;
-]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[HashMap<String, String>]]></ReturnType>
-					<Id>1552326511432</Id>
-					<Name><![CDATA[getGPSLocation]]></Name>
-					<X>290</X><Y>130</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[HashMap<String, String> lcn = new HashMap<String, String>();
-lcn.put("latitude", Double.toString(getLatitude()));
-lcn.put("longitude", Double.toString(getLongitude()));
-return lcn;]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[String]]></ReturnType>
-					<Id>1552326660522</Id>
-					<Name><![CDATA[getTimestamp]]></Name>
-					<X>290</X><Y>160</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:sss'Z'");
-df.setTimeZone(TimeZone.getTimeZone("UTC"));
-String timestamp = df.format(new Date());
-return timestamp;]]></Body>
-				</Function>
-			</Functions>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1552042571855</Id>
@@ -1159,6 +875,30 @@ return timestamp;]]></Body>
 			<Id>1552132000776</Id>
 			<Name><![CDATA[Trailer]]></Name>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
+			<ExtendsReference>
+				<PackageName><![CDATA[yard]]></PackageName>
+				<ClassName><![CDATA[Device]]></ClassName>
+			</ExtendsReference>
+			<Parameters>
+				<Parameter>
+					<Name><![CDATA[deviceId]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[name]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[bluetoothRange]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[parameter]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[normalSpeed]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[superSpeed]]></Name>
+				</Parameter>
+			</Parameters>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1552132000775</Id>
@@ -1249,57 +989,6 @@ return timestamp;]]></Body>
 				<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
 			</ScaleRuler>
 			<ConnectionsId>1552132000772</ConnectionsId>
-			<Variables>
-				<Variable Class="Parameter">
-					<Id>1552221102377</Id>
-					<Name><![CDATA[deviceId]]></Name>
-					<X>40</X><Y>40</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[String]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA["testTrailerId"]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1552221102374</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1552221302954</Id>
-					<Name><![CDATA[name]]></Name>
-					<X>40</X><Y>60</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[String]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA["testTrailerName"
-]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1552221302952</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-			</Variables>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1552132000772</Id>
@@ -1376,6 +1065,667 @@ return timestamp;]]></Body>
 					<ApplyShading>true</ApplyShading>
 				</Figure3D>
 			</Shapes>
+
+		</ActiveObjectClass>
+		<!--   =========   Active Object Class   ========  -->
+		<ActiveObjectClass>
+			<Id>1552329258859</Id>
+			<Name><![CDATA[Device]]></Name>
+			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
+			<Generic>false</Generic>
+			<GenericParameter>
+				<Id>1552329258858</Id>
+				<Name><![CDATA[1552329258858]]></Name>
+				<GenericParameterValue Class="CodeValue">
+					<Code><![CDATA[T extends Agent]]></Code>
+				</GenericParameterValue>
+				<GenericParameterLabel><![CDATA[Generic parameter:]]></GenericParameterLabel>
+			</GenericParameter>
+			<FlowChartsUsage>ENTITY</FlowChartsUsage>
+			<SamplesToKeep>100</SamplesToKeep>
+			<LimitNumberOfArrayElements>false</LimitNumberOfArrayElements>
+			<ElementsLimitValue>100</ElementsLimitValue>
+			<MakeDefaultViewArea>true</MakeDefaultViewArea>
+			<SceneGridColor/>
+			<SceneBackgroundColor/>
+			<AgentProperties>
+	 			<SpaceType>CONTINUOUS</SpaceType>			
+				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
+				<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
+				<RotateAnimationVertically>false</RotateAnimationVertically>
+				<VelocityCode Class="CodeUnitValue">
+					<Code><![CDATA[10]]></Code>
+					<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+				</VelocityCode>
+				<PhysicalLength Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalLength>
+				<PhysicalWidth Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalWidth>
+				<PhysicalHeight Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalHeight>
+			</AgentProperties>
+			<EnvironmentProperties>
+					<EnableSteps>false</EnableSteps>
+					<StepDurationCode Class="CodeUnitValue">
+						<Code><![CDATA[1.0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</StepDurationCode>
+					<SpaceType>CONTINUOUS</SpaceType>
+					<WidthCode><![CDATA[500]]></WidthCode>
+					<HeightCode><![CDATA[500]]></HeightCode>
+					<ZHeightCode><![CDATA[0]]></ZHeightCode>
+					<ColumnsCountCode><![CDATA[100]]></ColumnsCountCode>
+					<RowsCountCode><![CDATA[100]]></RowsCountCode>
+					<NeigborhoodType>MOORE</NeigborhoodType>
+					<LayoutType>USER_DEF</LayoutType>
+					<LayoutTypeApplyOnStartup>true</LayoutTypeApplyOnStartup>
+					<NetworkType>USER_DEF</NetworkType>
+					<NetworkTypeApplyOnStartup>true</NetworkTypeApplyOnStartup>
+					<ConnectionsPerAgentCode><![CDATA[2]]></ConnectionsPerAgentCode>
+					<ConnectionsRangeCode><![CDATA[50]]></ConnectionsRangeCode>
+					<NeighborLinkFractionCode><![CDATA[0.95]]></NeighborLinkFractionCode>
+					<MCode><![CDATA[10]]></MCode>
+			</EnvironmentProperties>
+			<DatasetsCreationProperties>
+				<AutoCreate>true</AutoCreate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1552377600000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</RecurrenceCode>
+			</DatasetsCreationProperties>
+			<ScaleRuler>
+				<Id>1552329258856</Id>
+				<Name><![CDATA[scale]]></Name>
+				<X>0</X><Y>-150</Y>
+				<PublicFlag>false</PublicFlag>
+				<PresentationFlag>false</PresentationFlag>
+				<ShowLabel>false</ShowLabel>
+				<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+				<Length>100</Length>
+				<Rotation>0</Rotation>
+				<ScaleType>BASED_ON_LENGTH</ScaleType>
+				<ModelLength>10</ModelLength>
+				<LengthUnits>METER</LengthUnits>
+				<Scale>10</Scale>
+				<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
+			</ScaleRuler>
+			<ConnectionsId>1552329258855</ConnectionsId>
+			<Variables>
+				<Variable Class="Parameter">
+					<Id>1552405593138</Id>
+					<Name><![CDATA[deviceId]]></Name>
+					<X>-120</X><Y>30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1552405593136</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1552405605291</Id>
+					<Name><![CDATA[name]]></Name>
+					<X>-120</X><Y>60</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1552405605289</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1552405612762</Id>
+					<Name><![CDATA[bluetoothRange]]></Name>
+					<X>-120</X><Y>90</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[]]></Type>
+						<UnitType><![CDATA[LENGTH]]></UnitType>
+						<UnitOfValue Class="LengthUnits"><![CDATA[METER]]></UnitOfValue>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeUnitValue">
+							<Code><![CDATA[]]></Code>
+							<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1552405612760</Id>
+							<EditorContolType>UNIT_EDITOR</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1552405629015</Id>
+					<Name><![CDATA[parameter]]></Name>
+					<X>-120</X><Y>120</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1552405629013</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1552405649330</Id>
+					<Name><![CDATA[normalSpeed]]></Name>
+					<X>-120</X><Y>150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[]]></Type>
+						<UnitType><![CDATA[VELOCITY]]></UnitType>
+						<UnitOfValue Class="SpeedUnits"><![CDATA[KPH]]></UnitOfValue>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeUnitValue">
+							<Code><![CDATA[]]></Code>
+							<Unit Class="SpeedUnits"><![CDATA[KPH]]></Unit>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1552405649328</Id>
+							<EditorContolType>UNIT_EDITOR</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1552405661784</Id>
+					<Name><![CDATA[superSpeed]]></Name>
+					<X>-120</X><Y>180</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[]]></Type>
+						<UnitType><![CDATA[VELOCITY]]></UnitType>
+						<UnitOfValue Class="SpeedUnits"><![CDATA[MPS]]></UnitOfValue>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeUnitValue">
+							<Code><![CDATA[1000]]></Code>
+							<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1552405661782</Id>
+							<Label><![CDATA[parameter1]]></Label>
+							<EditorContolType>UNIT_EDITOR</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+			</Variables>
+			<Functions>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[boolean]]></ReturnType>
+					<Id>1552406124479</Id>
+					<Name><![CDATA[isWithinRange]]></Name>
+					<X>400</X><Y>30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[device]]></Name>
+						<Type><![CDATA[Device]]></Type>
+					</Parameter>
+					<Body><![CDATA[if(distanceTo(device,METER) <= bluetoothRange) {
+	return true;
+}
+return false;]]></Body>
+				</Function>
+			</Functions>
+			<AgentLinks>
+				<AgentLink>
+					<Id>1552329258855</Id>
+					<Name><![CDATA[connections]]></Name>
+					<X>50</X><Y>-50</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<HandleReceiveInConnections>false</HandleReceiveInConnections>
+					<AgentLinkType>COLLECTION_OF_LINKS</AgentLinkType>
+					<AgentLinkBidirectional>true</AgentLinkBidirectional>
+					<MessageType><![CDATA[Object]]></MessageType>
+					<LineStyle>SOLID</LineStyle>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineZOrder>UNDER_AGENTS</LineZOrder>
+					<LineArrow>NONE</LineArrow>
+					<LineArrowPosition>END</LineArrowPosition>
+				</AgentLink>
+			</AgentLinks>
+
+
+
+		</ActiveObjectClass>
+		<!--   =========   Active Object Class   ========  -->
+		<ActiveObjectClass>
+			<Id>1552408325886</Id>
+			<Name><![CDATA[SmartDevice]]></Name>
+			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
+			<Import><![CDATA[import org.json.simple.JSONObject;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+import java.util.Date;
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.entity.StringEntity;]]></Import>
+			<ExtendsReference>
+				<PackageName><![CDATA[yard]]></PackageName>
+				<ClassName><![CDATA[Device]]></ClassName>
+			</ExtendsReference>
+			<Parameters>
+				<Parameter>
+					<Name><![CDATA[deviceId]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[name]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[bluetoothRange]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[parameter]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[normalSpeed]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[superSpeed]]></Name>
+				</Parameter>
+			</Parameters>
+			<Generic>false</Generic>
+			<GenericParameter>
+				<Id>1552408325885</Id>
+				<Name><![CDATA[1552408325885]]></Name>
+				<GenericParameterValue Class="CodeValue">
+					<Code><![CDATA[T extends Agent]]></Code>
+				</GenericParameterValue>
+				<GenericParameterLabel><![CDATA[Generic parameter:]]></GenericParameterLabel>
+			</GenericParameter>
+			<FlowChartsUsage>ENTITY</FlowChartsUsage>
+			<SamplesToKeep>100</SamplesToKeep>
+			<LimitNumberOfArrayElements>false</LimitNumberOfArrayElements>
+			<ElementsLimitValue>100</ElementsLimitValue>
+			<MakeDefaultViewArea>true</MakeDefaultViewArea>
+			<SceneGridColor/>
+			<SceneBackgroundColor/>
+			<AgentProperties>
+	 			<SpaceType>CONTINUOUS</SpaceType>			
+				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
+				<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
+				<RotateAnimationVertically>false</RotateAnimationVertically>
+				<VelocityCode Class="CodeUnitValue">
+					<Code><![CDATA[10]]></Code>
+					<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+				</VelocityCode>
+				<PhysicalLength Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalLength>
+				<PhysicalWidth Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalWidth>
+				<PhysicalHeight Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalHeight>
+			</AgentProperties>
+			<EnvironmentProperties>
+					<EnableSteps>false</EnableSteps>
+					<StepDurationCode Class="CodeUnitValue">
+						<Code><![CDATA[1.0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</StepDurationCode>
+					<SpaceType>CONTINUOUS</SpaceType>
+					<WidthCode><![CDATA[500]]></WidthCode>
+					<HeightCode><![CDATA[500]]></HeightCode>
+					<ZHeightCode><![CDATA[0]]></ZHeightCode>
+					<ColumnsCountCode><![CDATA[100]]></ColumnsCountCode>
+					<RowsCountCode><![CDATA[100]]></RowsCountCode>
+					<NeigborhoodType>MOORE</NeigborhoodType>
+					<LayoutType>USER_DEF</LayoutType>
+					<LayoutTypeApplyOnStartup>true</LayoutTypeApplyOnStartup>
+					<NetworkType>USER_DEF</NetworkType>
+					<NetworkTypeApplyOnStartup>true</NetworkTypeApplyOnStartup>
+					<ConnectionsPerAgentCode><![CDATA[2]]></ConnectionsPerAgentCode>
+					<ConnectionsRangeCode><![CDATA[50]]></ConnectionsRangeCode>
+					<NeighborLinkFractionCode><![CDATA[0.95]]></NeighborLinkFractionCode>
+					<MCode><![CDATA[10]]></MCode>
+			</EnvironmentProperties>
+			<DatasetsCreationProperties>
+				<AutoCreate>true</AutoCreate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1552464000000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</RecurrenceCode>
+			</DatasetsCreationProperties>
+			<ScaleRuler>
+				<Id>1552408325883</Id>
+				<Name><![CDATA[scale]]></Name>
+				<X>0</X><Y>-150</Y>
+				<PublicFlag>false</PublicFlag>
+				<PresentationFlag>false</PresentationFlag>
+				<ShowLabel>false</ShowLabel>
+				<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+				<Length>100</Length>
+				<Rotation>0</Rotation>
+				<ScaleType>BASED_ON_LENGTH</ScaleType>
+				<ModelLength>10</ModelLength>
+				<LengthUnits>METER</LengthUnits>
+				<Scale>10</Scale>
+				<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
+			</ScaleRuler>
+			<ConnectionsId>1552408325882</ConnectionsId>
+			<Variables>
+				<Variable Class="Parameter">
+					<Id>1552408362181</Id>
+					<Name><![CDATA[scanInterval]]></Name>
+					<X>-120</X><Y>210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[]]></Type>
+						<UnitType><![CDATA[TIME]]></UnitType>
+						<UnitOfValue Class="TimeUnits"><![CDATA[SECOND]]></UnitOfValue>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1552408362179</Id>
+							<EditorContolType>UNIT_EDITOR</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1552408362184</Id>
+					<Name><![CDATA[readingsEndpoint]]></Name>
+					<X>-120</X><Y>240</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["https://mkemiiguo5.execute-api.us-east-2.amazonaws.com/latest/readings"]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1552408362182</Id>
+							<Label><![CDATA[endpoint]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1552408362187</Id>
+					<Name><![CDATA[rootEndpoint]]></Name>
+					<X>-120</X><Y>270</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["https://mkemiiguo5.execute-api.us-east-2.amazonaws.com/latest/"]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1552408362185</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+			</Variables>
+			<Functions>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[boolean]]></ReturnType>
+					<Id>1552408521568</Id>
+					<Name><![CDATA[uploadReading]]></Name>
+					<X>400</X><Y>150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[reading]]></Name>
+						<Type><![CDATA[JSONObject]]></Type>
+					</Parameter>
+					<Body><![CDATA[try {
+	CloseableHttpClient httpClient = HttpClients.createDefault();
+	HttpPost post = new HttpPost(readingsEndpoint);
+	StringEntity data = new StringEntity(
+		reading.toString(),
+		"application/json",
+		"UTF-8");
+	post.setEntity(data);
+	CloseableHttpResponse res = httpClient.execute(post);
+	System.out.println(res.getStatusLine());
+	HttpEntity entity = res.getEntity();
+	return true;
+} catch (Exception e) {
+	System.out.println("Exception" + e.getMessage());
+	return false;
+} finally {
+
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[boolean]]></ReturnType>
+					<Id>1552408521571</Id>
+					<Name><![CDATA[testServerConnection]]></Name>
+					<X>400</X><Y>60</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[try {
+	CloseableHttpClient httpClient = HttpClients.createDefault();
+	HttpGet req = new HttpGet(rootEndpoint);
+	CloseableHttpResponse res = httpClient.execute(req);
+	System.out.println(res.getStatusLine());
+	HttpEntity entity = res.getEntity();
+	return true;
+} catch (Exception e) {
+	System.out.println("Exception" + e.getMessage());
+	return false;
+} finally {
+
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[ArrayList<HashMap>]]></ReturnType>
+					<Id>1552408521573</Id>
+					<Name><![CDATA[scanForNearbyDevices]]></Name>
+					<X>400</X><Y>180</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[ArrayList<HashMap> devices = new ArrayList();
+for( Trailer t : main.trailers ) { //go through all trailers in the simulation
+	if(t.isWithinRange(this) && isWithinRange(t)) {
+		HashMap<String, String> device = new HashMap();
+		device.put("deviceId", t.deviceId);
+		device.put("name", t.name);
+		devices.add(device);
+	}
+} 
+return devices;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[JSONObject]]></ReturnType>
+					<Id>1552408521576</Id>
+					<Name><![CDATA[takeReading]]></Name>
+					<X>400</X><Y>120</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[JSONObject reading = new JSONObject();
+reading.put("deviceId", deviceId);
+reading.put("location", getGPSLocation());
+reading.put("devices", scanForNearbyDevices());
+reading.put("timestamp", getTimestamp());
+return reading;
+]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[HashMap<String, String>]]></ReturnType>
+					<Id>1552408521579</Id>
+					<Name><![CDATA[getGPSLocation]]></Name>
+					<X>400</X><Y>240</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[HashMap<String, String> lcn = new HashMap<String, String>();
+lcn.put("latitude", Double.toString(getLatitude()));
+lcn.put("longitude", Double.toString(getLongitude()));
+return lcn;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[String]]></ReturnType>
+					<Id>1552408521581</Id>
+					<Name><![CDATA[getTimestamp]]></Name>
+					<X>400</X><Y>210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:sss'Z'");
+df.setTimeZone(TimeZone.getTimeZone("UTC"));
+String timestamp = df.format(new Date());
+return timestamp;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[boolean]]></ReturnType>
+					<Id>1552408521584</Id>
+					<Name><![CDATA[scanAndUpload]]></Name>
+					<X>400</X><Y>90</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[JSONObject reading = takeReading();
+System.out.println(reading);
+Boolean success = uploadReading(reading);
+return success;]]></Body>
+				</Function>
+			</Functions>
+			<AgentLinks>
+				<AgentLink>
+					<Id>1552408325882</Id>
+					<Name><![CDATA[connections]]></Name>
+					<X>50</X><Y>-50</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<HandleReceiveInConnections>false</HandleReceiveInConnections>
+					<AgentLinkType>COLLECTION_OF_LINKS</AgentLinkType>
+					<AgentLinkBidirectional>true</AgentLinkBidirectional>
+					<MessageType><![CDATA[Object]]></MessageType>
+					<LineStyle>SOLID</LineStyle>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineZOrder>UNDER_AGENTS</LineZOrder>
+					<LineArrow>NONE</LineArrow>
+					<LineArrowPosition>END</LineArrowPosition>
+				</AgentLink>
+			</AgentLinks>
+
+
 
 		</ActiveObjectClass>
 	</ActiveObjectClasses>	
@@ -1483,17 +1833,17 @@ return timestamp;]]></Body>
 		</SimulationExperiment>	
 	</Experiments>
 	<ClassPathEntry>
-		<Location><![CDATA[dependancies/httpclient-4.5.7.jar]]></Location>
+		<Location><![CDATA[dependencies/json-simple-1.1.1.jar]]></Location>
 		<Imported>false</Imported>
 		<Folder>false</Folder>
 	</ClassPathEntry>
 	<ClassPathEntry>
-		<Location><![CDATA[dependancies/httpcore-4.4.11.jar]]></Location>
+		<Location><![CDATA[dependencies/httpclient-4.5.7.jar]]></Location>
 		<Imported>false</Imported>
 		<Folder>false</Folder>
 	</ClassPathEntry>
 	<ClassPathEntry>
-		<Location><![CDATA[dependancies/json-simple-1.1.1.jar]]></Location>
+		<Location><![CDATA[dependencies/httpcore-4.4.11.jar]]></Location>
 		<Imported>false</Imported>
 		<Folder>false</Folder>
 	</ClassPathEntry>
