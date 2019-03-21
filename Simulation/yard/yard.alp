@@ -269,7 +269,8 @@
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
-						<Code><![CDATA[1]]></Code>
+						<Code><![CDATA[5
+]]></Code>
 					</Replication>
 					<CollectionType>ARRAY_LIST_BASED</CollectionType>
 					<InEnvironment>true</InEnvironment>	
@@ -399,6 +400,388 @@
 					<QuantityColumn>
 					</QuantityColumn>
 				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>0</Id>
+					<Name><![CDATA[trailer]]></Name>
+					<X>-70</X><Y>180</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<PresentationId>1553115511699</PresentationId>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[yard]]></PackageName>
+						<ClassName><![CDATA[Trailer]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[yard]]></PackageName>
+							<ClassName><![CDATA[Trailer]]></ClassName>
+							<ItemName><![CDATA[1552132000775]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[deviceId]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[name]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[bluetoothRange]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[parameter]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[normalSpeed]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[superSpeed]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InEnvironment>true</InEnvironment>	
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>0</Id>
+					<Name><![CDATA[trailer1]]></Name>
+					<X>-70</X><Y>220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<PresentationId>1553115543723</PresentationId>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[yard]]></PackageName>
+						<ClassName><![CDATA[Trailer]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[yard]]></PackageName>
+							<ClassName><![CDATA[Trailer]]></ClassName>
+							<ItemName><![CDATA[1552132000775]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[deviceId]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[name]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[bluetoothRange]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[parameter]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[normalSpeed]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[superSpeed]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InEnvironment>true</InEnvironment>	
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>0</Id>
+					<Name><![CDATA[trailer2]]></Name>
+					<X>-80</X><Y>260</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<PresentationId>1553115567775</PresentationId>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[yard]]></PackageName>
+						<ClassName><![CDATA[Trailer]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[yard]]></PackageName>
+							<ClassName><![CDATA[Trailer]]></ClassName>
+							<ItemName><![CDATA[1552132000775]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[deviceId]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[name]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[bluetoothRange]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[parameter]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[normalSpeed]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[superSpeed]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InEnvironment>true</InEnvironment>	
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>0</Id>
+					<Name><![CDATA[trailer3]]></Name>
+					<X>-90</X><Y>310</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<PresentationId>1553115590218</PresentationId>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[yard]]></PackageName>
+						<ClassName><![CDATA[Trailer]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[yard]]></PackageName>
+							<ClassName><![CDATA[Trailer]]></ClassName>
+							<ItemName><![CDATA[1552132000775]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[deviceId]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[name]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[bluetoothRange]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[parameter]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[normalSpeed]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[superSpeed]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InEnvironment>true</InEnvironment>	
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>0</Id>
+					<Name><![CDATA[tractorTrailer]]></Name>
+					<X>-80</X><Y>350</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<PresentationId>1553115650583</PresentationId>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[yard]]></PackageName>
+						<ClassName><![CDATA[TractorTrailer]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[yard]]></PackageName>
+							<ClassName><![CDATA[TractorTrailer]]></ClassName>
+							<ItemName><![CDATA[1553115650540]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InEnvironment>true</InEnvironment>	
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
 			</EmbeddedObjects>
 
 			<Shapes>
@@ -416,9 +799,9 @@
 					<Height>400</Height>
 					<GISShapes>
 					</GISShapes>
-					<Latitude>53.29112878543297</Latitude>
-					<Longitude>-9.070612746682738</Longitude>
-					<Scale>1264</Scale>
+					<Latitude>53.29106386616666</Latitude>
+					<Longitude>-9.070841957647879</Longitude>
+					<Scale>500</Scale>
 					<BorderColor>-4144960</BorderColor>
 					<FillColor>-1</FillColor>
 					<ShowTiles>true</ShowTiles>
@@ -437,88 +820,6 @@
 					<MapScaleBasedGeneralization>true</MapScaleBasedGeneralization>
 					<AbsolutePrecisionGeneralization>1000</AbsolutePrecisionGeneralization>
 
-			<Shapes>
-						<GISNetwork>
-							<Id>1552131848779</Id>
-							<Name><![CDATA[network]]></Name>
-							<X>0</X><Y>0</Y>
-							<Label><X>10</X><Y>0</Y></Label>
-							<PublicFlag>true</PublicFlag>
-							<PresentationFlag>true</PresentationFlag>
-							<ShowLabel>false</ShowLabel>
-							<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-
-			<Shapes>
-				<GISPoint>
-					<Id>1552047589981</Id>
-					<Name><![CDATA[startNode]]></Name>
-					<X>378</X><Y>408</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<Z>0</Z>
-					<LineColor>-5952982</LineColor>
-					<LineMaterial>null</LineMaterial>
-					<LineWidth>1</LineWidth>
-					<LineStyle>SOLID</LineStyle>
-					<ReadOnly>false</ReadOnly>
-					<Latitude>53.290799043288516</Latitude>	
-					<Longitude>-9.071048093841652</Longitude>
-					<Radius>3</Radius>
-					<FillColor>2144175423</FillColor>
-				</GISPoint>
-
-				<GISRoute SourceId="1552047589981" TargetId="1552047609131">
-
-					<Id>1552131846732</Id>
-					<Name><![CDATA[gisRoute]]></Name>
-					<X>0</X><Y>0</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<Z>0</Z>
-					<LineColor>-5952982</LineColor>
-					<LineMaterial>null</LineMaterial>
-					<LineWidth>1</LineWidth>
-					<LineStyle>DASHED</LineStyle>
-					<ReadOnly>false</ReadOnly>
-					<Points>
-						<Point><X>53.290799043288516</X><Y>-9.071048093841652</Y></Point>
-						<Point><X>53.29133650370006</X><Y>-9.070718638358478</Y></Point>
-					</Points>
-					<Bidirectional>true</Bidirectional>
-
-				</GISRoute>
-
-				<GISPoint>
-					<Id>1552047609131</Id>
-					<Name><![CDATA[endNode]]></Name>
-					<X>474</X><Y>146</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<Z>0</Z>
-					<LineColor>-5952982</LineColor>
-					<LineMaterial>null</LineMaterial>
-					<LineWidth>1</LineWidth>
-					<LineStyle>SOLID</LineStyle>
-					<ReadOnly>false</ReadOnly>
-					<Latitude>53.29133650370006</Latitude>	
-					<Longitude>-9.070718638358478</Longitude>
-					<Radius>3</Radius>
-					<FillColor>2144175423</FillColor>
-				</GISPoint>
-
-			</Shapes>
-
-						</GISNetwork>
-			</Shapes>
 
 				</GISMap>
 				<EmbeddedObjectPresentation>
@@ -535,10 +836,10 @@
 					<Rotation>0.0</Rotation>
 					<DrawingMode>AGENT_CURRENT_POSITION</DrawingMode>
 					<ScaleType>AUTOMATICALLY_CALCULATED</ScaleType>
-					<GISScaleForRealEmbeddedObjectPresentationSize>10000</GISScaleForRealEmbeddedObjectPresentationSize>
+					<GISScaleForRealEmbeddedObjectPresentationSize>1000000</GISScaleForRealEmbeddedObjectPresentationSize>
 					<GISScaleForFixedEmbeddedObjectPresentationSize>1000000000</GISScaleForFixedEmbeddedObjectPresentationSize>
-					<Latitude>53.290785835734006</Latitude>
-					<Longitude>-9.07105</Longitude>
+					<Latitude>53.2911011380069</Latitude>
+					<Longitude>-9.071129816081722</Longitude>
 				</EmbeddedObjectPresentation>
 				<EmbeddedObjectPresentation>
 					<Id>1552132000791</Id>
@@ -554,10 +855,10 @@
 					<Rotation>0.0</Rotation>
 					<DrawingMode>AGENT_CURRENT_POSITION</DrawingMode>
 					<ScaleType>AUTOMATICALLY_CALCULATED</ScaleType>
-					<GISScaleForRealEmbeddedObjectPresentationSize>1000</GISScaleForRealEmbeddedObjectPresentationSize>
+					<GISScaleForRealEmbeddedObjectPresentationSize>100000</GISScaleForRealEmbeddedObjectPresentationSize>
 					<GISScaleForFixedEmbeddedObjectPresentationSize>1000000000</GISScaleForFixedEmbeddedObjectPresentationSize>
-					<Latitude>53.29114158780117</Latitude>
-					<Longitude>-9.070989080949515</Longitude>
+					<Latitude>53.291114621275966</Latitude>
+					<Longitude>-9.070982140420668</Longitude>
 				</EmbeddedObjectPresentation>
 				<EmbeddedObjectPresentation>
 					<Id>1552503651376</Id>
@@ -577,6 +878,101 @@
 					<GISScaleForFixedEmbeddedObjectPresentationSize>1000000000</GISScaleForFixedEmbeddedObjectPresentationSize>
 					<Latitude>53.29112878543297</Latitude>
 					<Longitude>-9.070612746682738</Longitude>
+				</EmbeddedObjectPresentation>
+				<EmbeddedObjectPresentation>
+					<Id>1553115511699</Id>
+					<Name><![CDATA[trailer_presentation]]></Name>
+					<X>340</X><Y>270</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<DrawingMode>AGENT_CURRENT_POSITION</DrawingMode>
+					<ScaleType>AUTOMATICALLY_CALCULATED</ScaleType>
+					<GISScaleForRealEmbeddedObjectPresentationSize>1264</GISScaleForRealEmbeddedObjectPresentationSize>
+					<GISScaleForFixedEmbeddedObjectPresentationSize>1000000000</GISScaleForFixedEmbeddedObjectPresentationSize>
+					<Latitude>53.29114123151953</Latitude>
+					<Longitude>-9.070949362331746</Longitude>
+				</EmbeddedObjectPresentation>
+				<EmbeddedObjectPresentation>
+					<Id>1553115543723</Id>
+					<Name><![CDATA[trailer1_presentation]]></Name>
+					<X>30</X><Y>220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<DrawingMode>AGENT_CURRENT_POSITION</DrawingMode>
+					<ScaleType>AUTOMATICALLY_CALCULATED</ScaleType>
+					<GISScaleForRealEmbeddedObjectPresentationSize>1264</GISScaleForRealEmbeddedObjectPresentationSize>
+					<GISScaleForFixedEmbeddedObjectPresentationSize>1000000000</GISScaleForFixedEmbeddedObjectPresentationSize>
+					<Latitude>53.291081075400925</Latitude>
+					<Longitude>-9.07100488656251</Longitude>
+				</EmbeddedObjectPresentation>
+				<EmbeddedObjectPresentation>
+					<Id>1553115567775</Id>
+					<Name><![CDATA[trailer2_presentation]]></Name>
+					<X>20</X><Y>260</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<DrawingMode>AGENT_CURRENT_POSITION</DrawingMode>
+					<ScaleType>AUTOMATICALLY_CALCULATED</ScaleType>
+					<GISScaleForRealEmbeddedObjectPresentationSize>1264</GISScaleForRealEmbeddedObjectPresentationSize>
+					<GISScaleForFixedEmbeddedObjectPresentationSize>1000000000</GISScaleForFixedEmbeddedObjectPresentationSize>
+					<Latitude>53.29104373707781</Latitude>
+					<Longitude>-9.071029178413468</Longitude>
+				</EmbeddedObjectPresentation>
+				<EmbeddedObjectPresentation>
+					<Id>1553115590218</Id>
+					<Name><![CDATA[trailer3_presentation]]></Name>
+					<X>10</X><Y>310</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<DrawingMode>AGENT_CURRENT_POSITION</DrawingMode>
+					<ScaleType>AUTOMATICALLY_CALCULATED</ScaleType>
+					<GISScaleForRealEmbeddedObjectPresentationSize>1264</GISScaleForRealEmbeddedObjectPresentationSize>
+					<GISScaleForFixedEmbeddedObjectPresentationSize>1000000000</GISScaleForFixedEmbeddedObjectPresentationSize>
+					<Latitude>53.29100847307601</Latitude>
+					<Longitude>-9.07105347026443</Longitude>
+				</EmbeddedObjectPresentation>
+				<EmbeddedObjectPresentation>
+					<Id>1553115650583</Id>
+					<Name><![CDATA[tractorTrailer_presentation]]></Name>
+					<X>20</X><Y>350</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>105.0</Rotation>
+					<DrawingMode>AGENT_CURRENT_POSITION</DrawingMode>
+					<ScaleType>AUTOMATICALLY_CALCULATED</ScaleType>
+					<GISScaleForRealEmbeddedObjectPresentationSize>1264</GISScaleForRealEmbeddedObjectPresentationSize>
+					<GISScaleForFixedEmbeddedObjectPresentationSize>1000000000</GISScaleForFixedEmbeddedObjectPresentationSize>
+					<Latitude>53.29097320904512</Latitude>
+					<Longitude>-9.070928540745212</Longitude>
 				</EmbeddedObjectPresentation>
 			</Shapes>
 
@@ -1882,6 +2278,175 @@ return success;]]></Body>
 			</AgentLinks>
 
 
+
+		</ActiveObjectClass>
+		<!--   =========   Active Object Class   ========  -->
+		<ActiveObjectClass>
+			<Id>1553115650541</Id>
+			<Name><![CDATA[TractorTrailer]]></Name>
+			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
+			<Generic>false</Generic>
+			<GenericParameter>
+				<Id>1553115650540</Id>
+				<Name><![CDATA[1553115650540]]></Name>
+				<GenericParameterValue Class="CodeValue">
+					<Code><![CDATA[T extends Agent]]></Code>
+				</GenericParameterValue>
+				<GenericParameterLabel><![CDATA[Generic parameter:]]></GenericParameterLabel>
+			</GenericParameter>
+			<FlowChartsUsage>ENTITY</FlowChartsUsage>
+			<SamplesToKeep>100</SamplesToKeep>
+			<LimitNumberOfArrayElements>false</LimitNumberOfArrayElements>
+			<ElementsLimitValue>100</ElementsLimitValue>
+			<MakeDefaultViewArea>true</MakeDefaultViewArea>
+			<SceneGridColor/>
+			<SceneBackgroundColor/>
+			<AgentProperties>
+	 			<SpaceType>CONTINUOUS</SpaceType>			
+				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
+				<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
+				<RotateAnimationVertically>false</RotateAnimationVertically>
+				<VelocityCode Class="CodeUnitValue">
+					<Code><![CDATA[10]]></Code>
+					<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+				</VelocityCode>
+				<PhysicalLength Class="CodeUnitValue">
+					<Code><![CDATA[9.424]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalLength>
+				<PhysicalWidth Class="CodeUnitValue">
+					<Code><![CDATA[2.088]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalWidth>
+				<PhysicalHeight Class="CodeUnitValue">
+					<Code><![CDATA[2.858]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalHeight>
+			</AgentProperties>
+			<EnvironmentProperties>
+					<EnableSteps>false</EnableSteps>
+					<StepDurationCode Class="CodeUnitValue">
+						<Code><![CDATA[1.0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</StepDurationCode>
+					<SpaceType>CONTINUOUS</SpaceType>
+					<WidthCode><![CDATA[500]]></WidthCode>
+					<HeightCode><![CDATA[500]]></HeightCode>
+					<ZHeightCode><![CDATA[0]]></ZHeightCode>
+					<ColumnsCountCode><![CDATA[100]]></ColumnsCountCode>
+					<RowsCountCode><![CDATA[100]]></RowsCountCode>
+					<NeigborhoodType>MOORE</NeigborhoodType>
+					<LayoutType>USER_DEF</LayoutType>
+					<LayoutTypeApplyOnStartup>true</LayoutTypeApplyOnStartup>
+					<NetworkType>USER_DEF</NetworkType>
+					<NetworkTypeApplyOnStartup>true</NetworkTypeApplyOnStartup>
+					<ConnectionsPerAgentCode><![CDATA[2]]></ConnectionsPerAgentCode>
+					<ConnectionsRangeCode><![CDATA[50]]></ConnectionsRangeCode>
+					<NeighborLinkFractionCode><![CDATA[0.95]]></NeighborLinkFractionCode>
+					<MCode><![CDATA[10]]></MCode>
+			</EnvironmentProperties>
+			<DatasetsCreationProperties>
+				<AutoCreate>true</AutoCreate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1553155200000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</RecurrenceCode>
+			</DatasetsCreationProperties>
+			<ScaleRuler>
+				<Id>1553115650538</Id>
+				<Name><![CDATA[scale]]></Name>
+				<X>0</X><Y>-150</Y>
+				<PublicFlag>false</PublicFlag>
+				<PresentationFlag>false</PresentationFlag>
+				<ShowLabel>false</ShowLabel>
+				<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+				<Length>100</Length>
+				<Rotation>0</Rotation>
+				<ScaleType>BASED_ON_LENGTH</ScaleType>
+				<ModelLength>10</ModelLength>
+				<LengthUnits>METER</LengthUnits>
+				<Scale>10</Scale>
+				<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
+			</ScaleRuler>
+			<ConnectionsId>1553115650537</ConnectionsId>
+			<AgentLinks>
+				<AgentLink>
+					<Id>1553115650537</Id>
+					<Name><![CDATA[connections]]></Name>
+					<X>50</X><Y>-50</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<HandleReceiveInConnections>false</HandleReceiveInConnections>
+					<AgentLinkType>COLLECTION_OF_LINKS</AgentLinkType>
+					<AgentLinkBidirectional>true</AgentLinkBidirectional>
+					<MessageType><![CDATA[Object]]></MessageType>
+					<LineStyle>SOLID</LineStyle>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineZOrder>UNDER_AGENTS</LineZOrder>
+					<LineArrow>NONE</LineArrow>
+					<LineArrowPosition>END</LineArrowPosition>
+				</AgentLink>
+			</AgentLinks>
+
+			<ContainerLinks>
+				<ContainerLink>
+					<Id>1553115650603</Id>
+					<Name><![CDATA[main]]></Name>
+					<X>50</X><Y>-100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[yard]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+					</ActiveObjectClass>
+				</ContainerLink>
+			</ContainerLinks>
+
+			<Shapes>
+				<Figure3D>
+					<Id>1553115650582</Id>
+					<Name><![CDATA[truck]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>0</X><Y>0</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<FileName><![CDATA[3d/truck.dae]]></FileName>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Material__2__Surf]]></Name>
+							<OriginalColor>-3403008</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Material__1__Surf]]></Name>
+							<OriginalColor>-11908534</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Material__3__Surf]]></Name>
+							<OriginalColor>-3618616</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>1.0</Scale>
+					<Rotation>0.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+				</Figure3D>
+			</Shapes>
 
 		</ActiveObjectClass>
 	</ActiveObjectClasses>	
