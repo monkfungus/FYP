@@ -1,8 +1,14 @@
 import json
 import argparse
 import statistics
-# from json file of multiple gps readings, 
-# compute mean, variance etc
+
+##
+# from json file of multiple gps readings compute mean, variance etc
+# 
+# run something along the lines of 
+#   python3 gps_analysis.py gps_test_accuracy_output.txt >> gps_analysis_results.txt
+##
+
 description =  'from json file of multiple gps readings, compute mean, variance etc'
 def main():
     filename = ''    

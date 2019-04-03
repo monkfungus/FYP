@@ -10,7 +10,7 @@ import json
 # Read GPS updates from the GPS module and print to screen
 # 
 # To run while saving the output, run something like
-#   ./gps_test_accuracy >> output.txt 2>&1
+#   python3 ./gps_test_accuracy >> gps_test_accuracy_output.txt 2>&1
 # which redirects stdout and stderr to output.txt so if Pi crashes 
 # we still have some results!
 ###
