@@ -15,8 +15,8 @@ const table = {
 }
 
 const deviceMeasurementErr = {
-    smart: 0.0000001,
-    dumb: 0.00001
+    smart: 0.00001,
+    dumb: 0.2
 }
 
 // upload a reading
@@ -254,13 +254,12 @@ function estimateNewLocation(device, measurement, measurementErr) {
 
 // Kalman gain
 function kalmanGain(estimationError, measurementError) {
-    return estimationError / (estimationError + measurementError)
+    let KG = estimationError / (estimationError + measurementError)
+    if (isNaN(KG)) return 0
+    return KG
 }
 
 function kalmanEstimate(prevEst, KG, measurement) {
-    let a = measurement - prevEst
-    let b = KG * a
-    let c = prevEst + b
     return parseFloat(prevEst) + parseFloat((KG * (measurement - prevEst)))
 }
 

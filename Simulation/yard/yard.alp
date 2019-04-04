@@ -233,7 +233,7 @@ allDevices.add(newF);]]></StartupCode>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[HashMap<String, String>]]></ReturnType>
+					<ReturnType><![CDATA[HashMap<String, Double>]]></ReturnType>
 					<Id>1553623719092</Id>
 					<Name><![CDATA[getAWSDeviceLocation]]></Name>
 					<X>-370</X><Y>60</Y>
@@ -246,7 +246,7 @@ allDevices.add(newF);]]></StartupCode>
 						<Type><![CDATA[String]]></Type>
 					</Parameter>
 					<Body><![CDATA[// hits aws for given deviceId and returns location
-HashMap<String, String> location = new HashMap();
+HashMap<String, Double> location = new HashMap();
 String endpoint = String.format("%s%s/location", getDevicesEndpoint(), deviceId);
 CloseableHttpClient httpClient = HttpClients.createDefault();
 HttpGet req = new HttpGet(endpoint);
@@ -256,7 +256,7 @@ try (CloseableHttpResponse res = httpClient.execute(req)) {
 	System.out.println(res.getStatusLine());
 	HttpEntity entity = res.getEntity();
 	JSONObject body = (JSONObject) parser.parse(EntityUtils.toString(entity));
-	location = (HashMap<String, String>) body.get("location"); 
+	location = (HashMap<String, Double>) body.get("location"); 
 } catch (Exception e) {
 	System.out.println("Exception" + e.getMessage());
 } 
@@ -692,10 +692,10 @@ return true;]]></Body>
 					<LineStyle>DASHED</LineStyle>
 					<ReadOnly>false</ReadOnly>
 					<Points>
-						<Point><X>53.2910069746398</X><Y>-9.070917054451684</Y></Point>
-						<Point><X>53.29114701491149</X><Y>-9.070823655023057</Y></Point>
-						<Point><X>53.29117381976826</X><Y>-9.070804893906022</Y></Point>
-						<Point><X>53.291195701048245</X><Y>-9.070791624171283</Y></Point>
+						<Point><X>53.290885532857864</X><Y>-9.070996672860117</Y></Point>
+						<Point><X>53.29121484715906</X><Y>-9.070773321088886</Y></Point>
+						<Point><X>53.29126572106892</X><Y>-9.071025903625983</Y></Point>
+						<Point><X>53.290983999194026</X><Y>-9.071189716213452</Y></Point>
 					</Points>
 					<Bidirectional>true</Bidirectional>
 
@@ -716,8 +716,8 @@ return true;]]></Body>
 					<LineWidth>1</LineWidth>
 					<LineStyle>SOLID</LineStyle>
 					<ReadOnly>false</ReadOnly>
-					<Latitude>53.2910069746398</Latitude>	
-					<Longitude>-9.070917054451684</Longitude>
+					<Latitude>53.290885532857864</Latitude>	
+					<Longitude>-9.070996672860117</Longitude>
 					<Radius>3</Radius>
 					<FillColor>2144175423</FillColor>
 				</GISPoint>
@@ -737,8 +737,8 @@ return true;]]></Body>
 					<LineWidth>1</LineWidth>
 					<LineStyle>SOLID</LineStyle>
 					<ReadOnly>false</ReadOnly>
-					<Latitude>53.291195701048245</Latitude>	
-					<Longitude>-9.070791624171283</Longitude>
+					<Latitude>53.290983999194026</Latitude>	
+					<Longitude>-9.071189716213452</Longitude>
 					<Radius>3</Radius>
 					<FillColor>2144175423</FillColor>
 				</GISPoint>
@@ -2121,8 +2121,8 @@ return success;]]></Body>
 	<RelativeAccuracy>1.0E-5</RelativeAccuracy>
 	<TimeAccuracy>1.0E-5</TimeAccuracy>
 	<Frame>
-		<Width>1000</Width>
-		<Height>600</Height>
+		<Width>840</Width>
+		<Height>520</Height>
 	</Frame>
 	<Database>
 		<Logging>false</Logging>
@@ -2198,17 +2198,18 @@ try {
 }]]></BeforeSimulationRunCode>
 			<AfterSimulationRunCode><![CDATA[System.out.println("after sim run under simulation");
 ArrayList<Device> allDevices = root.getAllDevices();
+
 for(Device d : allDevices) {
-	HashMap<String, double> elcn = root.getAWSDeviceLocation(d.deviceId);
-	String ret = String.valueOf(elcn.get("latitude"));
-	System.out.printf("ret: %s%n", ret);
+	HashMap<String, Double> elcn = root.getAWSDeviceLocation(d.deviceId);
 	
 	double eLat = elcn.get("latitude");
 	double eLon = elcn.get("longitude");
 	double aLat = d.getLatitude();
 	double aLon = d.getLongitude();
+	
 	GISPoint p = new GISPoint(root.getMap(), aLat, aLon);
 	double distanceErr = p.distance(eLat, eLon, METER);
+	
 	System.out.printf("deviceId: %s. name: %s. DISTANCE ERROR: %s (m). ACTUAL: lat: %s. long: %s. ESTIMATED: lat: %s. long: %s%n"
 					, d.deviceId, d.name, distanceErr, aLat, aLon, eLat, eLon);
 }]]></AfterSimulationRunCode>
