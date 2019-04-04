@@ -327,6 +327,18 @@ try {
 }
 return true;]]></Body>
 				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[ShapeGISMap]]></ReturnType>
+					<Id>1554373008004</Id>
+					<Name><![CDATA[getMap]]></Name>
+					<X>-370</X><Y>210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[return map;]]></Body>
+				</Function>
 			</Functions>
 			<AgentLinks>
 				<AgentLink>
@@ -2187,11 +2199,18 @@ try {
 			<AfterSimulationRunCode><![CDATA[System.out.println("after sim run under simulation");
 ArrayList<Device> allDevices = root.getAllDevices();
 for(Device d : allDevices) {
-	HashMap<String, String> lcn = root.getAWSDeviceLocation(d.deviceId);
-	String rLat = lcn.get("latitude");
-	String rLon = lcn.get("longitude");
-	System.out.printf("deviceId: %s. name: %s. ACTUAL: lat: %s. long: %s. REPORTED: lat: %s. long: %s%n"
-					, d.deviceId, d.name, d.getLatitude(), d.getLongitude(), rLat, rLon);
+	HashMap<String, double> elcn = root.getAWSDeviceLocation(d.deviceId);
+	String ret = String.valueOf(elcn.get("latitude"));
+	System.out.printf("ret: %s%n", ret);
+	
+	double eLat = elcn.get("latitude");
+	double eLon = elcn.get("longitude");
+	double aLat = d.getLatitude();
+	double aLon = d.getLongitude();
+	GISPoint p = new GISPoint(root.getMap(), aLat, aLon);
+	double distanceErr = p.distance(eLat, eLon, METER);
+	System.out.printf("deviceId: %s. name: %s. DISTANCE ERROR: %s (m). ACTUAL: lat: %s. long: %s. ESTIMATED: lat: %s. long: %s%n"
+					, d.deviceId, d.name, distanceErr, aLat, aLon, eLat, eLon);
 }]]></AfterSimulationRunCode>
 			<SeedValue>1</SeedValue>
 			<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>

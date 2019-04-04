@@ -1,14 +1,18 @@
 {
-    "deviceId": "id of sending device",
-    "timestamp": "",
+    "deviceId": "forklift_002",
+    "timestamp": "2019-02-25T10:30:40.762Z",
     "location": {
-        "latitude": "",
-        "longitude": ""
+        "latitude": 53.2836066,
+        "longitude": -9.0649583
     },
     "devices": [
-        {
-            "id": "",
-            "name": ""
-        }
-    ]
+      {
+        "deviceId": "98:01:A7:B4:EF:50",
+        "name": "trailer_001"
+      },
+      {
+        "deviceId": "98:01:A7:B4:EF:8A",
+        "name": "trailer_005"
+      }
+    ] 
 }
