@@ -211,6 +211,29 @@ app.get('/devices/:deviceId/location', (req, res) => {
     })
 })
 
+// delete a device by deviceId
+app.delete('/devices/:deviceId', (req, res) => {
+    log(req)
+    const deviceId = req.params.deviceId
+    let params = {
+        TableName: table.devices,
+        Key: {
+            "deviceId": deviceId
+        }
+    }
+    console.log(`Attempting to delete deviceId ${deviceId} from table:/${table.devices}`)
+    docClient.delete(params, function(err, data) {
+        if (err) {
+            const errMsg = `Unable to delete deviceId ${deviceId} Error: ${stringify(err)}`
+            console.error(errMsg)
+            res.status(500).send(errMsg)
+        } else {
+            console.log(`Successfully deleted deviceId ${deviceId}`)
+            res.sendStatus(200)
+        } 
+    })
+})
+
 // root endpoint, mainly used to show up status
 app.get('/', (req, res) => {
     log(req)
