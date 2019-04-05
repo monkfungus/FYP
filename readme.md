@@ -35,3 +35,11 @@ To run the test suite against a remote instance `npm run test-remote`
 
 To run the test suite against a local instance `npm run test-local`
 
+## Raspberry Pi
+
+ssh pi@raspberrypi.local
+scp path/to/origin pi@raspberrypi.local:~/path/to/destination
+export FYP_ENDPOINT=`cat endpoint.txt`
+
+
+
