@@ -8,7 +8,7 @@
             "name": "Lambda",
             "type": "node",
             "request": "launch",
-            "program": "${workspaceFolder}/Lambda/server.js",
+            "program": "${workspaceFolder}/CloudServices/server.js",
             "env": {
                 "LOCAL": "True"
             }
@@ -17,10 +17,10 @@
             "name": "lambda test",
             "type": "node",
             "request": "launch",
-            "cwd": "${workspaceFolder}/Lambda",
-            "runtimeExecutable": "${workspaceFolder}/Lambda/node_modules/mocha/bin/mocha",
+            "cwd": "${workspaceFolder}/CloudServices",
+            "runtimeExecutable": "${workspaceFolder}/LambdaCloudServices/node_modules/mocha/bin/mocha",
             "runtimeArgs": [
-                "${workspaceFolder}/Lambda/test"
+                "${workspaceFolder}/CloudServices/test"
             ],
             "outputCapture": "std",
             "env": {

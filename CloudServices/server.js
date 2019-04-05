@@ -59,12 +59,21 @@ app.post('/readings', (req, res) => {
                             // calculate new location
                             const previousDeviceState = data.Items[0]
              
-                            // decide what error to use
-                            let measurementErr = deviceMeasurementErr.dumb // default
-                            if (device.deviceId === reading.deviceId) { // on the device that took the reading
-                                measurementErr = deviceMeasurementErr.smart
-                            } 
-                            const kalmanEstimation = estimateNewLocation(previousDeviceState, reading.location, measurementErr);
+                            let location = {}
+
+                            if (device.deviceId === reading.deviceId) { 
+                                // if this is the device that took the reading, the location can be taken as-is
+                                //measurementErr = deviceMeasurementErr.smart
+                                location.latitude = parseFloat(reading.location.latitude)
+                                location.longitude = parseFloat(reading.location.longitude)
+                                location.latitudeEstimationError = parseFloat(0.001)
+                                location.longitudeEstimationError = parseFloat(0.001)
+                            } else {
+                                // decide what error to use
+                                let measurementErr = deviceMeasurementErr.dumb // default
+                                location = estimateNewLocation(previousDeviceState, reading.location, measurementErr);
+                            }
+                            
                             // put latest location up with device                                                            
                             params = {
                                 TableName: table.devices,
@@ -73,7 +82,7 @@ app.post('/readings', (req, res) => {
                                 },
                                 UpdateExpression: "set lastKnownLocation = :l, locationUpdateTimestamp = :t",
                                 ExpressionAttributeValues: {
-                                    ":l": kalmanEstimation,
+                                    ":l": location,
                                     ":t": reading.timestamp
                                 },
                                 ReturnValues: "UPDATED_NEW"
