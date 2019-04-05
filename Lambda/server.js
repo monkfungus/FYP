@@ -204,9 +204,14 @@ app.get('/devices/:deviceId/location', (req, res) => {
             console.error(errMsg)
             res.status(500).send(errMsg)
         } else {
-            console.log(`Found deviceId ${deviceId}`)
-            const device = data.Items[0]
-            res.status(200).send({location: device.lastKnownLocation})
+            if (data.Items.length > 0) {
+                console.log(`Found deviceId ${deviceId}`)
+                const device = data.Items[0]
+                res.status(200).send({location: device.lastKnownLocation})
+            } else {
+                console.log(`Unable to find deviceId ${deviceId}`)
+                res.status(500);
+            }        
         } 
     })
 })
